@@ -29,32 +29,16 @@ int main(void) {
 	while(1) {
 				if (Manual == 0) {
 					// Loop para modo Manual (Manual = 0)
-					
-					PORTD |= (1 << PD2);  // Encender solo D2
-					_delay_ms(2);
-					uint16_t pot1 = leerADC(6);  // ADC6 -> pot 1
-					PORTD &= ~(1 << PD2);  // Apagar D2
-					_delay_ms(2);
-
+					PORTD |= (1 << PD2) | (1 << PD3) | (1 << PD4) | (1 << PD5);
+					uint16_t pot1 = (leerADC(4)/10);  
 					// Leer pot 2
-					PORTD |= (1 << PD3);  // Encender solo D3
-					_delay_ms(2);
-					uint16_t pot2 = leerADC(7);  // ADC7 -> pot 2
-					PORTD &= ~(1 << PD3);  // Apagar D3
-					_delay_ms(2);
-
+					uint16_t pot2 = (leerADC(5)/10);  
 					// Leer pot 3
-					PORTD |= (1 << PD4);  // Encender solo D4
-					_delay_ms(2);
-					uint16_t pot3 = leerADC(6);  // ADC6 -> pot 3
-					PORTD &= ~(1 << PD4);  // Apagar D4
-					_delay_ms(2);
-
+					uint16_t pot3 = (leerADC(6)/10); 
 					// Leer pot 4
-					PORTD |= (1 << PD5);  // Encender solo D5
-					_delay_ms(2);
-					uint16_t pot4 = leerADC(7);  // ADC7 -> pot 4
-					PORTD &= ~(1 << PD5);  // Apagar D5
+					uint16_t pot4 = (leerADC(7)/10);  
+					
+					_delay_ms(10);
 					
 					if (Terminal == 0) {
 						limpiarTerminal();
