@@ -29,6 +29,9 @@ int main(void) {
 	while(1) {
 				if (Manual == 0) {
 					// Loop para modo Manual (Manual = 0)
+					//led que indica modo manual
+					PORTD |= (1 << PD6);
+					//para leer los pots
 					PORTD |= (1 << PD2) | (1 << PD3) | (1 << PD4) | (1 << PD5);
 					uint16_t pot1 = (leerADC(4)/10);  
 					// Leer pot 2
