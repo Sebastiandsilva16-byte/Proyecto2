@@ -47,13 +47,13 @@ int main(void) {
 					PORTD &= ~(1 << PD7); 
 					//para leer los pots
 					PORTD |= (1 << PD2) | (1 << PD3) | (1 << PD4) | (1 << PD5);
-					uint16_t pot1 = (leerADC(4)/10);  
+					pot1 = (leerADC(4)/10);  
 					// Leer pot 2
-					uint16_t pot2 = (leerADC(5)/10);  
+					pot2 = (leerADC(5)/10);  
 					// Leer pot 3
-					uint16_t pot3 = (leerADC(6)/10); 
+					pot3 = (leerADC(6)/10); 
 					// Leer pot 4
-					uint16_t pot4 = (leerADC(7)/10);  
+					pot4 = (leerADC(7)/10);  
 					
 					_delay_ms(10);
 					
@@ -172,7 +172,7 @@ void manejarComandosSerial(void) {
 						numeroBuffer[indiceNumero++] = comando;
 						enviarChar(comando);
 					}
-					// Si ya tenemos 3 dígitos (máximo 100), aceptamos automáticamente
+					// Si ya tenemos 3 dígitos, validamos automáticamente
 					if (indiceNumero == 3) {
 						uint8_t nuevoValor = atoi(numeroBuffer);
 						if (nuevoValor >= 0 && nuevoValor <= 100) {
@@ -188,6 +188,13 @@ void manejarComandosSerial(void) {
 							enviarString(itoa(nuevoValor, buffer, 10));
 							enviarString("\r\n");
 							
+							editando = 0;
+							pasoEdicion = 0;
+							Terminal = 0;
+							} else {
+							// Valor mayor a 100
+							enviarString("\r\nERROR: Valor debe ser entre 0 y 100\r\n");
+							enviarString("Presione cualquier tecla para continuar...\r\n");
 							editando = 0;
 							pasoEdicion = 0;
 							Terminal = 0;
@@ -214,19 +221,27 @@ void manejarComandosSerial(void) {
 							pasoEdicion = 0;
 							Terminal = 0;
 							} else {
-							enviarString("\r\nValor invalido. Debe ser entre 0 y 100\r\n");
-							enviarString("Presione Enter para continuar...\r\n");
+							enviarString("\r\nERROR: Valor debe ser entre 0 y 100\r\n");
+							enviarString("Presione cualquier tecla para continuar...\r\n");
 							editando = 0;
 							pasoEdicion = 0;
 							Terminal = 0;
 						}
 						} else {
 						enviarString("\r\nNo ingreso ningun valor\r\n");
-						enviarString("Presione Enter para continuar...\r\n");
+						enviarString("Presione cualquier tecla para continuar...\r\n");
 						editando = 0;
 						pasoEdicion = 0;
 						Terminal = 0;
 					}
+				}
+				// Si se presiona cualquier otra tecla (no número, no Enter) salir
+				else {
+					enviarString("\r\nComando cancelado\r\n");
+					enviarString("Presione cualquier tecla para continuar...\r\n");
+					editando = 0;
+					pasoEdicion = 0;
+					Terminal = 0;
 				}
 			}
 			return;

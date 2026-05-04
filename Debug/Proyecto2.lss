@@ -3,31 +3,31 @@ Proyecto2.elf:     file format elf32-avr
 
 Sections:
 Idx Name          Size      VMA       LMA       File off  Algn
-  0 .data         00000274  00800100  000007ac  00000840  2**0
+  0 .data         00000290  00800100  00000820  000008b4  2**0
                   CONTENTS, ALLOC, LOAD, DATA
-  1 .text         000007ac  00000000  00000000  00000094  2**1
+  1 .text         00000820  00000000  00000000  00000094  2**1
                   CONTENTS, ALLOC, LOAD, READONLY, CODE
-  2 .bss          0000001d  00800374  00800374  00000ab4  2**0
+  2 .bss          0000001d  00800390  00800390  00000b44  2**0
                   ALLOC
-  3 .comment      00000030  00000000  00000000  00000ab4  2**0
+  3 .comment      00000030  00000000  00000000  00000b44  2**0
                   CONTENTS, READONLY
-  4 .note.gnu.avr.deviceinfo 00000040  00000000  00000000  00000ae4  2**2
+  4 .note.gnu.avr.deviceinfo 00000040  00000000  00000000  00000b74  2**2
                   CONTENTS, READONLY
-  5 .debug_aranges 00000058  00000000  00000000  00000b24  2**0
+  5 .debug_aranges 00000058  00000000  00000000  00000bb4  2**0
                   CONTENTS, READONLY, DEBUGGING
-  6 .debug_info   00001621  00000000  00000000  00000b7c  2**0
+  6 .debug_info   00001620  00000000  00000000  00000c0c  2**0
                   CONTENTS, READONLY, DEBUGGING
-  7 .debug_abbrev 00000843  00000000  00000000  0000219d  2**0
+  7 .debug_abbrev 00000843  00000000  00000000  0000222c  2**0
                   CONTENTS, READONLY, DEBUGGING
-  8 .debug_line   0000077a  00000000  00000000  000029e0  2**0
+  8 .debug_line   000007b6  00000000  00000000  00002a6f  2**0
                   CONTENTS, READONLY, DEBUGGING
-  9 .debug_frame  000000b8  00000000  00000000  0000315c  2**2
+  9 .debug_frame  000000b8  00000000  00000000  00003228  2**2
                   CONTENTS, READONLY, DEBUGGING
- 10 .debug_str    000004a5  00000000  00000000  00003214  2**0
+ 10 .debug_str    000004a5  00000000  00000000  000032e0  2**0
                   CONTENTS, READONLY, DEBUGGING
- 11 .debug_loc    000004f2  00000000  00000000  000036b9  2**0
+ 11 .debug_loc    000004af  00000000  00000000  00003785  2**0
                   CONTENTS, READONLY, DEBUGGING
- 12 .debug_ranges 00000048  00000000  00000000  00003bab  2**0
+ 12 .debug_ranges 00000048  00000000  00000000  00003c34  2**0
                   CONTENTS, READONLY, DEBUGGING
 
 Disassembly of section .text:
@@ -72,18 +72,18 @@ Disassembly of section .text:
   74:	13 e0       	ldi	r17, 0x03	; 3
   76:	a0 e0       	ldi	r26, 0x00	; 0
   78:	b1 e0       	ldi	r27, 0x01	; 1
-  7a:	ec ea       	ldi	r30, 0xAC	; 172
-  7c:	f7 e0       	ldi	r31, 0x07	; 7
+  7a:	e0 e2       	ldi	r30, 0x20	; 32
+  7c:	f8 e0       	ldi	r31, 0x08	; 8
   7e:	02 c0       	rjmp	.+4      	; 0x84 <__do_copy_data+0x10>
   80:	05 90       	lpm	r0, Z+
   82:	0d 92       	st	X+, r0
-  84:	a4 37       	cpi	r26, 0x74	; 116
+  84:	a0 39       	cpi	r26, 0x90	; 144
   86:	b1 07       	cpc	r27, r17
   88:	d9 f7       	brne	.-10     	; 0x80 <__do_copy_data+0xc>
 
 0000008a <__do_clear_bss>:
   8a:	23 e0       	ldi	r18, 0x03	; 3
-  8c:	a4 e7       	ldi	r26, 0x74	; 116
+  8c:	a0 e9       	ldi	r26, 0x90	; 144
   8e:	b3 e0       	ldi	r27, 0x03	; 3
   90:	01 c0       	rjmp	.+2      	; 0x94 <.do_clear_bss_start>
 
@@ -91,11 +91,11 @@ Disassembly of section .text:
   92:	1d 92       	st	X+, r1
 
 00000094 <.do_clear_bss_start>:
-  94:	a1 39       	cpi	r26, 0x91	; 145
+  94:	ad 3a       	cpi	r26, 0xAD	; 173
   96:	b2 07       	cpc	r27, r18
   98:	e1 f7       	brne	.-8      	; 0x92 <.do_clear_bss_loop>
-  9a:	0e 94 a5 02 	call	0x54a	; 0x54a <main>
-  9e:	0c 94 d4 03 	jmp	0x7a8	; 0x7a8 <_exit>
+  9a:	0e 94 c7 02 	call	0x58e	; 0x58e <main>
+  9e:	0c 94 0e 04 	jmp	0x81c	; 0x81c <_exit>
 
 000000a2 <__bad_interrupt>:
   a2:	0c 94 00 00 	jmp	0	; 0x0 <__vectors>
@@ -222,7 +222,7 @@ void limpiarTerminal(void) {
  126:	d0 e0       	ldi	r29, 0x00	; 0
  128:	05 c0       	rjmp	.+10     	; 0x134 <limpiarTerminal+0x14>
 		enviarString("\r\n");
- 12a:	80 e6       	ldi	r24, 0x60	; 96
+ 12a:	8d e7       	ldi	r24, 0x7D	; 125
  12c:	92 e0       	ldi	r25, 0x02	; 2
  12e:	0e 94 83 00 	call	0x106	; 0x106 <enviarString>
 		enviarChar(*str++);
@@ -250,18 +250,18 @@ void manejarComandosSerial(void) {
  144:	80 91 c0 00 	lds	r24, 0x00C0	; 0x8000c0 <__TEXT_REGION_LENGTH__+0x7f80c0>
  148:	88 23       	and	r24, r24
  14a:	0c f0       	brlt	.+2      	; 0x14e <manejarComandosSerial+0xe>
- 14c:	9e c1       	rjmp	.+828    	; 0x48a <__EEPROM_REGION_LENGTH__+0x8a>
+ 14c:	c0 c1       	rjmp	.+896    	; 0x4ce <__EEPROM_REGION_LENGTH__+0xce>
 		char comando = UDR0;
  14e:	80 91 c6 00 	lds	r24, 0x00C6	; 0x8000c6 <__TEXT_REGION_LENGTH__+0x7f80c6>
 		
 		// Si estamos en modo edición
 		if (editando == 1) {
- 152:	90 91 77 03 	lds	r25, 0x0377	; 0x800377 <editando>
+ 152:	90 91 93 03 	lds	r25, 0x0393	; 0x800393 <editando>
  156:	91 30       	cpi	r25, 0x01	; 1
  158:	09 f0       	breq	.+2      	; 0x15c <manejarComandosSerial+0x1c>
- 15a:	16 c1       	rjmp	.+556    	; 0x388 <manejarComandosSerial+0x248>
+ 15a:	38 c1       	rjmp	.+624    	; 0x3cc <manejarComandosSerial+0x28c>
 			if (pasoEdicion == 0) {
- 15c:	90 91 75 03 	lds	r25, 0x0375	; 0x800375 <pasoEdicion>
+ 15c:	90 91 91 03 	lds	r25, 0x0391	; 0x800391 <pasoEdicion>
  160:	91 11       	cpse	r25, r1
  162:	1d c0       	rjmp	.+58     	; 0x19e <manejarComandosSerial+0x5e>
 				// Esperando selección del pot (1-4)
@@ -272,76 +272,76 @@ void manejarComandosSerial(void) {
  16a:	a0 f4       	brcc	.+40     	; 0x194 <manejarComandosSerial+0x54>
 					potSeleccionado = comando - '0';
  16c:	80 53       	subi	r24, 0x30	; 48
- 16e:	80 93 76 03 	sts	0x0376, r24	; 0x800376 <potSeleccionado>
+ 16e:	80 93 92 03 	sts	0x0392, r24	; 0x800392 <potSeleccionado>
 					enviarString("\r\nIngrese el nuevo valor (0-100): ");
  172:	80 e0       	ldi	r24, 0x00	; 0
  174:	91 e0       	ldi	r25, 0x01	; 1
  176:	0e 94 83 00 	call	0x106	; 0x106 <enviarString>
 					pasoEdicion = 1;
  17a:	81 e0       	ldi	r24, 0x01	; 1
- 17c:	80 93 75 03 	sts	0x0375, r24	; 0x800375 <pasoEdicion>
+ 17c:	80 93 91 03 	sts	0x0391, r24	; 0x800391 <pasoEdicion>
 					indiceNumero = 0;
- 180:	10 92 74 03 	sts	0x0374, r1	; 0x800374 <__data_end>
+ 180:	10 92 90 03 	sts	0x0390, r1	; 0x800390 <__data_end>
 					memset(numeroBuffer, 0, sizeof(numeroBuffer));
  184:	84 e0       	ldi	r24, 0x04	; 4
- 186:	ed e8       	ldi	r30, 0x8D	; 141
+ 186:	e9 ea       	ldi	r30, 0xA9	; 169
  188:	f3 e0       	ldi	r31, 0x03	; 3
  18a:	df 01       	movw	r26, r30
  18c:	1d 92       	st	X+, r1
  18e:	8a 95       	dec	r24
  190:	e9 f7       	brne	.-6      	; 0x18c <manejarComandosSerial+0x4c>
- 192:	7b c1       	rjmp	.+758    	; 0x48a <__EEPROM_REGION_LENGTH__+0x8a>
+ 192:	9d c1       	rjmp	.+826    	; 0x4ce <__EEPROM_REGION_LENGTH__+0xce>
 					} else {
 					enviarString("\r\nOpcion invalida. Seleccione un pot (1-4): ");
  194:	83 e2       	ldi	r24, 0x23	; 35
  196:	91 e0       	ldi	r25, 0x01	; 1
  198:	0e 94 83 00 	call	0x106	; 0x106 <enviarString>
- 19c:	76 c1       	rjmp	.+748    	; 0x48a <__EEPROM_REGION_LENGTH__+0x8a>
+ 19c:	98 c1       	rjmp	.+816    	; 0x4ce <__EEPROM_REGION_LENGTH__+0xce>
 				}
 			}
 			else if (pasoEdicion == 1) {
  19e:	91 30       	cpi	r25, 0x01	; 1
  1a0:	09 f0       	breq	.+2      	; 0x1a4 <manejarComandosSerial+0x64>
- 1a2:	73 c1       	rjmp	.+742    	; 0x48a <__EEPROM_REGION_LENGTH__+0x8a>
+ 1a2:	95 c1       	rjmp	.+810    	; 0x4ce <__EEPROM_REGION_LENGTH__+0xce>
 				// Esperando el valor numérico
 				if (comando >= '0' && comando <= '9') {
  1a4:	90 ed       	ldi	r25, 0xD0	; 208
  1a6:	98 0f       	add	r25, r24
  1a8:	9a 30       	cpi	r25, 0x0A	; 10
  1aa:	08 f0       	brcs	.+2      	; 0x1ae <manejarComandosSerial+0x6e>
- 1ac:	6b c0       	rjmp	.+214    	; 0x284 <manejarComandosSerial+0x144>
+ 1ac:	7c c0       	rjmp	.+248    	; 0x2a6 <manejarComandosSerial+0x166>
 					if (indiceNumero < 3) {
- 1ae:	e0 91 74 03 	lds	r30, 0x0374	; 0x800374 <__data_end>
+ 1ae:	e0 91 90 03 	lds	r30, 0x0390	; 0x800390 <__data_end>
  1b2:	e3 30       	cpi	r30, 0x03	; 3
  1b4:	50 f4       	brcc	.+20     	; 0x1ca <manejarComandosSerial+0x8a>
 						numeroBuffer[indiceNumero++] = comando;
  1b6:	91 e0       	ldi	r25, 0x01	; 1
  1b8:	9e 0f       	add	r25, r30
- 1ba:	90 93 74 03 	sts	0x0374, r25	; 0x800374 <__data_end>
+ 1ba:	90 93 90 03 	sts	0x0390, r25	; 0x800390 <__data_end>
  1be:	f0 e0       	ldi	r31, 0x00	; 0
- 1c0:	e3 57       	subi	r30, 0x73	; 115
+ 1c0:	e7 55       	subi	r30, 0x57	; 87
  1c2:	fc 4f       	sbci	r31, 0xFC	; 252
  1c4:	80 83       	st	Z, r24
 						enviarChar(comando);
  1c6:	0e 94 7c 00 	call	0xf8	; 0xf8 <enviarChar>
 					}
-					// Si ya tenemos 3 dígitos (máximo 100), aceptamos automáticamente
+					// Si ya tenemos 3 dígitos, validamos automáticamente
 					if (indiceNumero == 3) {
- 1ca:	80 91 74 03 	lds	r24, 0x0374	; 0x800374 <__data_end>
+ 1ca:	80 91 90 03 	lds	r24, 0x0390	; 0x800390 <__data_end>
  1ce:	83 30       	cpi	r24, 0x03	; 3
  1d0:	09 f0       	breq	.+2      	; 0x1d4 <manejarComandosSerial+0x94>
- 1d2:	5b c1       	rjmp	.+694    	; 0x48a <__EEPROM_REGION_LENGTH__+0x8a>
+ 1d2:	7d c1       	rjmp	.+762    	; 0x4ce <__EEPROM_REGION_LENGTH__+0xce>
 						uint8_t nuevoValor = atoi(numeroBuffer);
- 1d4:	8d e8       	ldi	r24, 0x8D	; 141
+ 1d4:	89 ea       	ldi	r24, 0xA9	; 169
  1d6:	93 e0       	ldi	r25, 0x03	; 3
- 1d8:	0e 94 79 03 	call	0x6f2	; 0x6f2 <atoi>
+ 1d8:	0e 94 b3 03 	call	0x766	; 0x766 <atoi>
  1dc:	ec 01       	movw	r28, r24
 						if (nuevoValor >= 0 && nuevoValor <= 100) {
  1de:	85 36       	cpi	r24, 0x65	; 101
  1e0:	08 f0       	brcs	.+2      	; 0x1e4 <manejarComandosSerial+0xa4>
- 1e2:	53 c1       	rjmp	.+678    	; 0x48a <__EEPROM_REGION_LENGTH__+0x8a>
+ 1e2:	50 c0       	rjmp	.+160    	; 0x284 <manejarComandosSerial+0x144>
 							switch(potSeleccionado) {
- 1e4:	80 91 76 03 	lds	r24, 0x0376	; 0x800376 <potSeleccionado>
+ 1e4:	80 91 92 03 	lds	r24, 0x0392	; 0x800392 <potSeleccionado>
  1e8:	82 30       	cpi	r24, 0x02	; 2
  1ea:	81 f0       	breq	.+32     	; 0x20c <manejarComandosSerial+0xcc>
  1ec:	18 f4       	brcc	.+6      	; 0x1f4 <manejarComandosSerial+0xb4>
@@ -356,33 +356,33 @@ void manejarComandosSerial(void) {
 								case 1: pot1 = nuevoValor; break;
  1fe:	ce 01       	movw	r24, r28
  200:	99 27       	eor	r25, r25
- 202:	90 93 82 03 	sts	0x0382, r25	; 0x800382 <pot1+0x1>
- 206:	80 93 81 03 	sts	0x0381, r24	; 0x800381 <pot1>
+ 202:	90 93 9e 03 	sts	0x039E, r25	; 0x80039e <pot1+0x1>
+ 206:	80 93 9d 03 	sts	0x039D, r24	; 0x80039d <pot1>
  20a:	14 c0       	rjmp	.+40     	; 0x234 <manejarComandosSerial+0xf4>
 								case 2: pot2 = nuevoValor; break;
  20c:	ce 01       	movw	r24, r28
  20e:	99 27       	eor	r25, r25
- 210:	90 93 80 03 	sts	0x0380, r25	; 0x800380 <pot2+0x1>
- 214:	80 93 7f 03 	sts	0x037F, r24	; 0x80037f <pot2>
+ 210:	90 93 9c 03 	sts	0x039C, r25	; 0x80039c <pot2+0x1>
+ 214:	80 93 9b 03 	sts	0x039B, r24	; 0x80039b <pot2>
  218:	0d c0       	rjmp	.+26     	; 0x234 <manejarComandosSerial+0xf4>
 								case 3: pot3 = nuevoValor; break;
  21a:	ce 01       	movw	r24, r28
  21c:	99 27       	eor	r25, r25
- 21e:	90 93 7e 03 	sts	0x037E, r25	; 0x80037e <pot3+0x1>
- 222:	80 93 7d 03 	sts	0x037D, r24	; 0x80037d <pot3>
+ 21e:	90 93 9a 03 	sts	0x039A, r25	; 0x80039a <pot3+0x1>
+ 222:	80 93 99 03 	sts	0x0399, r24	; 0x800399 <pot3>
  226:	06 c0       	rjmp	.+12     	; 0x234 <manejarComandosSerial+0xf4>
 								case 4: pot4 = nuevoValor; break;
  228:	ce 01       	movw	r24, r28
  22a:	99 27       	eor	r25, r25
- 22c:	90 93 7c 03 	sts	0x037C, r25	; 0x80037c <pot4+0x1>
- 230:	80 93 7b 03 	sts	0x037B, r24	; 0x80037b <pot4>
+ 22c:	90 93 98 03 	sts	0x0398, r25	; 0x800398 <pot4+0x1>
+ 230:	80 93 97 03 	sts	0x0397, r24	; 0x800397 <pot4>
 							}
 							enviarString("\r\nPot ");
  234:	80 e5       	ldi	r24, 0x50	; 80
  236:	91 e0       	ldi	r25, 0x01	; 1
  238:	0e 94 83 00 	call	0x106	; 0x106 <enviarString>
 							enviarString(itoa(potSeleccionado, buffer, 10));
- 23c:	80 91 76 03 	lds	r24, 0x0376	; 0x800376 <potSeleccionado>
+ 23c:	80 91 92 03 	lds	r24, 0x0392	; 0x800392 <potSeleccionado>
     } else if (__radix < 2 || __radix > 36) {
 	*__s = 0;
 	return __s;
@@ -390,719 +390,765 @@ void manejarComandosSerial(void) {
 	extern char *__itoa_ncheck (int, char *, unsigned char);
 	return __itoa_ncheck (__val, __s, __radix);
  240:	4a e0       	ldi	r20, 0x0A	; 10
- 242:	63 e8       	ldi	r22, 0x83	; 131
+ 242:	6f e9       	ldi	r22, 0x9F	; 159
  244:	73 e0       	ldi	r23, 0x03	; 3
  246:	90 e0       	ldi	r25, 0x00	; 0
- 248:	0e 94 97 03 	call	0x72e	; 0x72e <__itoa_ncheck>
+ 248:	0e 94 d1 03 	call	0x7a2	; 0x7a2 <__itoa_ncheck>
  24c:	0e 94 83 00 	call	0x106	; 0x106 <enviarString>
 							enviarString(" actualizado a: ");
  250:	87 e5       	ldi	r24, 0x57	; 87
  252:	91 e0       	ldi	r25, 0x01	; 1
  254:	0e 94 83 00 	call	0x106	; 0x106 <enviarString>
  258:	4a e0       	ldi	r20, 0x0A	; 10
- 25a:	63 e8       	ldi	r22, 0x83	; 131
+ 25a:	6f e9       	ldi	r22, 0x9F	; 159
  25c:	73 e0       	ldi	r23, 0x03	; 3
  25e:	8c 2f       	mov	r24, r28
  260:	90 e0       	ldi	r25, 0x00	; 0
- 262:	0e 94 97 03 	call	0x72e	; 0x72e <__itoa_ncheck>
+ 262:	0e 94 d1 03 	call	0x7a2	; 0x7a2 <__itoa_ncheck>
 							enviarString(itoa(nuevoValor, buffer, 10));
  266:	0e 94 83 00 	call	0x106	; 0x106 <enviarString>
 							enviarString("\r\n");
- 26a:	80 e6       	ldi	r24, 0x60	; 96
+ 26a:	8d e7       	ldi	r24, 0x7D	; 125
  26c:	92 e0       	ldi	r25, 0x02	; 2
  26e:	0e 94 83 00 	call	0x106	; 0x106 <enviarString>
 							
 							editando = 0;
- 272:	10 92 77 03 	sts	0x0377, r1	; 0x800377 <editando>
+ 272:	10 92 93 03 	sts	0x0393, r1	; 0x800393 <editando>
 							pasoEdicion = 0;
- 276:	10 92 75 03 	sts	0x0375, r1	; 0x800375 <pasoEdicion>
+ 276:	10 92 91 03 	sts	0x0391, r1	; 0x800391 <pasoEdicion>
 							Terminal = 0;
- 27a:	10 92 79 03 	sts	0x0379, r1	; 0x800379 <Terminal+0x1>
- 27e:	10 92 78 03 	sts	0x0378, r1	; 0x800378 <Terminal>
- 282:	03 c1       	rjmp	.+518    	; 0x48a <__EEPROM_REGION_LENGTH__+0x8a>
+ 27a:	10 92 95 03 	sts	0x0395, r1	; 0x800395 <Terminal+0x1>
+ 27e:	10 92 94 03 	sts	0x0394, r1	; 0x800394 <Terminal>
+ 282:	25 c1       	rjmp	.+586    	; 0x4ce <__EEPROM_REGION_LENGTH__+0xce>
+							} else {
+							// Valor mayor a 100
+							enviarString("\r\nERROR: Valor debe ser entre 0 y 100\r\n");
+ 284:	88 e6       	ldi	r24, 0x68	; 104
+ 286:	91 e0       	ldi	r25, 0x01	; 1
+ 288:	0e 94 83 00 	call	0x106	; 0x106 <enviarString>
+							enviarString("Presione cualquier tecla para continuar...\r\n");
+ 28c:	80 e9       	ldi	r24, 0x90	; 144
+ 28e:	91 e0       	ldi	r25, 0x01	; 1
+ 290:	0e 94 83 00 	call	0x106	; 0x106 <enviarString>
+							editando = 0;
+ 294:	10 92 93 03 	sts	0x0393, r1	; 0x800393 <editando>
+							pasoEdicion = 0;
+ 298:	10 92 91 03 	sts	0x0391, r1	; 0x800391 <pasoEdicion>
+							Terminal = 0;
+ 29c:	10 92 95 03 	sts	0x0395, r1	; 0x800395 <Terminal+0x1>
+ 2a0:	10 92 94 03 	sts	0x0394, r1	; 0x800394 <Terminal>
+ 2a4:	14 c1       	rjmp	.+552    	; 0x4ce <__EEPROM_REGION_LENGTH__+0xce>
 						}
 					}
 				}
 				else if (comando == '\r') {  // Enter
- 284:	8d 30       	cpi	r24, 0x0D	; 13
- 286:	09 f0       	breq	.+2      	; 0x28a <manejarComandosSerial+0x14a>
- 288:	00 c1       	rjmp	.+512    	; 0x48a <__EEPROM_REGION_LENGTH__+0x8a>
+ 2a6:	8d 30       	cpi	r24, 0x0D	; 13
+ 2a8:	09 f0       	breq	.+2      	; 0x2ac <manejarComandosSerial+0x16c>
+ 2aa:	7f c0       	rjmp	.+254    	; 0x3aa <manejarComandosSerial+0x26a>
 					if (indiceNumero > 0) {
- 28a:	80 91 74 03 	lds	r24, 0x0374	; 0x800374 <__data_end>
- 28e:	88 23       	and	r24, r24
- 290:	09 f4       	brne	.+2      	; 0x294 <manejarComandosSerial+0x154>
- 292:	69 c0       	rjmp	.+210    	; 0x366 <manejarComandosSerial+0x226>
+ 2ac:	80 91 90 03 	lds	r24, 0x0390	; 0x800390 <__data_end>
+ 2b0:	88 23       	and	r24, r24
+ 2b2:	09 f4       	brne	.+2      	; 0x2b6 <manejarComandosSerial+0x176>
+ 2b4:	69 c0       	rjmp	.+210    	; 0x388 <manejarComandosSerial+0x248>
 						uint8_t nuevoValor = atoi(numeroBuffer);
- 294:	8d e8       	ldi	r24, 0x8D	; 141
- 296:	93 e0       	ldi	r25, 0x03	; 3
- 298:	0e 94 79 03 	call	0x6f2	; 0x6f2 <atoi>
- 29c:	ec 01       	movw	r28, r24
+ 2b6:	89 ea       	ldi	r24, 0xA9	; 169
+ 2b8:	93 e0       	ldi	r25, 0x03	; 3
+ 2ba:	0e 94 b3 03 	call	0x766	; 0x766 <atoi>
+ 2be:	ec 01       	movw	r28, r24
 						if (nuevoValor >= 0 && nuevoValor <= 100) {
- 29e:	85 36       	cpi	r24, 0x65	; 101
- 2a0:	08 f0       	brcs	.+2      	; 0x2a4 <manejarComandosSerial+0x164>
- 2a2:	50 c0       	rjmp	.+160    	; 0x344 <manejarComandosSerial+0x204>
+ 2c0:	85 36       	cpi	r24, 0x65	; 101
+ 2c2:	08 f0       	brcs	.+2      	; 0x2c6 <manejarComandosSerial+0x186>
+ 2c4:	50 c0       	rjmp	.+160    	; 0x366 <manejarComandosSerial+0x226>
 							switch(potSeleccionado) {
- 2a4:	80 91 76 03 	lds	r24, 0x0376	; 0x800376 <potSeleccionado>
- 2a8:	82 30       	cpi	r24, 0x02	; 2
- 2aa:	81 f0       	breq	.+32     	; 0x2cc <manejarComandosSerial+0x18c>
- 2ac:	18 f4       	brcc	.+6      	; 0x2b4 <manejarComandosSerial+0x174>
- 2ae:	81 30       	cpi	r24, 0x01	; 1
- 2b0:	31 f0       	breq	.+12     	; 0x2be <manejarComandosSerial+0x17e>
- 2b2:	20 c0       	rjmp	.+64     	; 0x2f4 <manejarComandosSerial+0x1b4>
- 2b4:	83 30       	cpi	r24, 0x03	; 3
- 2b6:	89 f0       	breq	.+34     	; 0x2da <manejarComandosSerial+0x19a>
- 2b8:	84 30       	cpi	r24, 0x04	; 4
- 2ba:	b1 f0       	breq	.+44     	; 0x2e8 <manejarComandosSerial+0x1a8>
- 2bc:	1b c0       	rjmp	.+54     	; 0x2f4 <manejarComandosSerial+0x1b4>
+ 2c6:	80 91 92 03 	lds	r24, 0x0392	; 0x800392 <potSeleccionado>
+ 2ca:	82 30       	cpi	r24, 0x02	; 2
+ 2cc:	81 f0       	breq	.+32     	; 0x2ee <manejarComandosSerial+0x1ae>
+ 2ce:	18 f4       	brcc	.+6      	; 0x2d6 <manejarComandosSerial+0x196>
+ 2d0:	81 30       	cpi	r24, 0x01	; 1
+ 2d2:	31 f0       	breq	.+12     	; 0x2e0 <manejarComandosSerial+0x1a0>
+ 2d4:	20 c0       	rjmp	.+64     	; 0x316 <manejarComandosSerial+0x1d6>
+ 2d6:	83 30       	cpi	r24, 0x03	; 3
+ 2d8:	89 f0       	breq	.+34     	; 0x2fc <manejarComandosSerial+0x1bc>
+ 2da:	84 30       	cpi	r24, 0x04	; 4
+ 2dc:	b1 f0       	breq	.+44     	; 0x30a <manejarComandosSerial+0x1ca>
+ 2de:	1b c0       	rjmp	.+54     	; 0x316 <manejarComandosSerial+0x1d6>
 								case 1: pot1 = nuevoValor; break;
- 2be:	ce 01       	movw	r24, r28
- 2c0:	99 27       	eor	r25, r25
- 2c2:	90 93 82 03 	sts	0x0382, r25	; 0x800382 <pot1+0x1>
- 2c6:	80 93 81 03 	sts	0x0381, r24	; 0x800381 <pot1>
- 2ca:	14 c0       	rjmp	.+40     	; 0x2f4 <manejarComandosSerial+0x1b4>
+ 2e0:	ce 01       	movw	r24, r28
+ 2e2:	99 27       	eor	r25, r25
+ 2e4:	90 93 9e 03 	sts	0x039E, r25	; 0x80039e <pot1+0x1>
+ 2e8:	80 93 9d 03 	sts	0x039D, r24	; 0x80039d <pot1>
+ 2ec:	14 c0       	rjmp	.+40     	; 0x316 <manejarComandosSerial+0x1d6>
 								case 2: pot2 = nuevoValor; break;
- 2cc:	ce 01       	movw	r24, r28
- 2ce:	99 27       	eor	r25, r25
- 2d0:	90 93 80 03 	sts	0x0380, r25	; 0x800380 <pot2+0x1>
- 2d4:	80 93 7f 03 	sts	0x037F, r24	; 0x80037f <pot2>
- 2d8:	0d c0       	rjmp	.+26     	; 0x2f4 <manejarComandosSerial+0x1b4>
+ 2ee:	ce 01       	movw	r24, r28
+ 2f0:	99 27       	eor	r25, r25
+ 2f2:	90 93 9c 03 	sts	0x039C, r25	; 0x80039c <pot2+0x1>
+ 2f6:	80 93 9b 03 	sts	0x039B, r24	; 0x80039b <pot2>
+ 2fa:	0d c0       	rjmp	.+26     	; 0x316 <manejarComandosSerial+0x1d6>
 								case 3: pot3 = nuevoValor; break;
- 2da:	ce 01       	movw	r24, r28
- 2dc:	99 27       	eor	r25, r25
- 2de:	90 93 7e 03 	sts	0x037E, r25	; 0x80037e <pot3+0x1>
- 2e2:	80 93 7d 03 	sts	0x037D, r24	; 0x80037d <pot3>
- 2e6:	06 c0       	rjmp	.+12     	; 0x2f4 <manejarComandosSerial+0x1b4>
+ 2fc:	ce 01       	movw	r24, r28
+ 2fe:	99 27       	eor	r25, r25
+ 300:	90 93 9a 03 	sts	0x039A, r25	; 0x80039a <pot3+0x1>
+ 304:	80 93 99 03 	sts	0x0399, r24	; 0x800399 <pot3>
+ 308:	06 c0       	rjmp	.+12     	; 0x316 <manejarComandosSerial+0x1d6>
 								case 4: pot4 = nuevoValor; break;
- 2e8:	ce 01       	movw	r24, r28
- 2ea:	99 27       	eor	r25, r25
- 2ec:	90 93 7c 03 	sts	0x037C, r25	; 0x80037c <pot4+0x1>
- 2f0:	80 93 7b 03 	sts	0x037B, r24	; 0x80037b <pot4>
+ 30a:	ce 01       	movw	r24, r28
+ 30c:	99 27       	eor	r25, r25
+ 30e:	90 93 98 03 	sts	0x0398, r25	; 0x800398 <pot4+0x1>
+ 312:	80 93 97 03 	sts	0x0397, r24	; 0x800397 <pot4>
 							}
 							enviarString("\r\nPot ");
- 2f4:	80 e5       	ldi	r24, 0x50	; 80
- 2f6:	91 e0       	ldi	r25, 0x01	; 1
- 2f8:	0e 94 83 00 	call	0x106	; 0x106 <enviarString>
+ 316:	80 e5       	ldi	r24, 0x50	; 80
+ 318:	91 e0       	ldi	r25, 0x01	; 1
+ 31a:	0e 94 83 00 	call	0x106	; 0x106 <enviarString>
 							enviarString(itoa(potSeleccionado, buffer, 10));
- 2fc:	80 91 76 03 	lds	r24, 0x0376	; 0x800376 <potSeleccionado>
- 300:	4a e0       	ldi	r20, 0x0A	; 10
- 302:	63 e8       	ldi	r22, 0x83	; 131
- 304:	73 e0       	ldi	r23, 0x03	; 3
- 306:	90 e0       	ldi	r25, 0x00	; 0
- 308:	0e 94 97 03 	call	0x72e	; 0x72e <__itoa_ncheck>
- 30c:	0e 94 83 00 	call	0x106	; 0x106 <enviarString>
-							enviarString(" actualizado a: ");
- 310:	87 e5       	ldi	r24, 0x57	; 87
- 312:	91 e0       	ldi	r25, 0x01	; 1
- 314:	0e 94 83 00 	call	0x106	; 0x106 <enviarString>
- 318:	4a e0       	ldi	r20, 0x0A	; 10
- 31a:	63 e8       	ldi	r22, 0x83	; 131
- 31c:	73 e0       	ldi	r23, 0x03	; 3
- 31e:	8c 2f       	mov	r24, r28
- 320:	90 e0       	ldi	r25, 0x00	; 0
- 322:	0e 94 97 03 	call	0x72e	; 0x72e <__itoa_ncheck>
-							enviarString(itoa(nuevoValor, buffer, 10));
- 326:	0e 94 83 00 	call	0x106	; 0x106 <enviarString>
-							enviarString("\r\n");
- 32a:	80 e6       	ldi	r24, 0x60	; 96
- 32c:	92 e0       	ldi	r25, 0x02	; 2
+ 31e:	80 91 92 03 	lds	r24, 0x0392	; 0x800392 <potSeleccionado>
+ 322:	4a e0       	ldi	r20, 0x0A	; 10
+ 324:	6f e9       	ldi	r22, 0x9F	; 159
+ 326:	73 e0       	ldi	r23, 0x03	; 3
+ 328:	90 e0       	ldi	r25, 0x00	; 0
+ 32a:	0e 94 d1 03 	call	0x7a2	; 0x7a2 <__itoa_ncheck>
  32e:	0e 94 83 00 	call	0x106	; 0x106 <enviarString>
+							enviarString(" actualizado a: ");
+ 332:	87 e5       	ldi	r24, 0x57	; 87
+ 334:	91 e0       	ldi	r25, 0x01	; 1
+ 336:	0e 94 83 00 	call	0x106	; 0x106 <enviarString>
+ 33a:	4a e0       	ldi	r20, 0x0A	; 10
+ 33c:	6f e9       	ldi	r22, 0x9F	; 159
+ 33e:	73 e0       	ldi	r23, 0x03	; 3
+ 340:	8c 2f       	mov	r24, r28
+ 342:	90 e0       	ldi	r25, 0x00	; 0
+ 344:	0e 94 d1 03 	call	0x7a2	; 0x7a2 <__itoa_ncheck>
+							enviarString(itoa(nuevoValor, buffer, 10));
+ 348:	0e 94 83 00 	call	0x106	; 0x106 <enviarString>
+							enviarString("\r\n");
+ 34c:	8d e7       	ldi	r24, 0x7D	; 125
+ 34e:	92 e0       	ldi	r25, 0x02	; 2
+ 350:	0e 94 83 00 	call	0x106	; 0x106 <enviarString>
 							
 							editando = 0;
- 332:	10 92 77 03 	sts	0x0377, r1	; 0x800377 <editando>
+ 354:	10 92 93 03 	sts	0x0393, r1	; 0x800393 <editando>
 							pasoEdicion = 0;
- 336:	10 92 75 03 	sts	0x0375, r1	; 0x800375 <pasoEdicion>
+ 358:	10 92 91 03 	sts	0x0391, r1	; 0x800391 <pasoEdicion>
 							Terminal = 0;
- 33a:	10 92 79 03 	sts	0x0379, r1	; 0x800379 <Terminal+0x1>
- 33e:	10 92 78 03 	sts	0x0378, r1	; 0x800378 <Terminal>
- 342:	a3 c0       	rjmp	.+326    	; 0x48a <__EEPROM_REGION_LENGTH__+0x8a>
+ 35c:	10 92 95 03 	sts	0x0395, r1	; 0x800395 <Terminal+0x1>
+ 360:	10 92 94 03 	sts	0x0394, r1	; 0x800394 <Terminal>
+ 364:	b4 c0       	rjmp	.+360    	; 0x4ce <__EEPROM_REGION_LENGTH__+0xce>
 							} else {
-							enviarString("\r\nValor invalido. Debe ser entre 0 y 100\r\n");
- 344:	88 e6       	ldi	r24, 0x68	; 104
- 346:	91 e0       	ldi	r25, 0x01	; 1
- 348:	0e 94 83 00 	call	0x106	; 0x106 <enviarString>
-							enviarString("Presione Enter para continuar...\r\n");
- 34c:	83 e9       	ldi	r24, 0x93	; 147
- 34e:	91 e0       	ldi	r25, 0x01	; 1
- 350:	0e 94 83 00 	call	0x106	; 0x106 <enviarString>
+							enviarString("\r\nERROR: Valor debe ser entre 0 y 100\r\n");
+ 366:	88 e6       	ldi	r24, 0x68	; 104
+ 368:	91 e0       	ldi	r25, 0x01	; 1
+ 36a:	0e 94 83 00 	call	0x106	; 0x106 <enviarString>
+							enviarString("Presione cualquier tecla para continuar...\r\n");
+ 36e:	80 e9       	ldi	r24, 0x90	; 144
+ 370:	91 e0       	ldi	r25, 0x01	; 1
+ 372:	0e 94 83 00 	call	0x106	; 0x106 <enviarString>
 							editando = 0;
- 354:	10 92 77 03 	sts	0x0377, r1	; 0x800377 <editando>
+ 376:	10 92 93 03 	sts	0x0393, r1	; 0x800393 <editando>
 							pasoEdicion = 0;
- 358:	10 92 75 03 	sts	0x0375, r1	; 0x800375 <pasoEdicion>
+ 37a:	10 92 91 03 	sts	0x0391, r1	; 0x800391 <pasoEdicion>
 							Terminal = 0;
- 35c:	10 92 79 03 	sts	0x0379, r1	; 0x800379 <Terminal+0x1>
- 360:	10 92 78 03 	sts	0x0378, r1	; 0x800378 <Terminal>
- 364:	92 c0       	rjmp	.+292    	; 0x48a <__EEPROM_REGION_LENGTH__+0x8a>
+ 37e:	10 92 95 03 	sts	0x0395, r1	; 0x800395 <Terminal+0x1>
+ 382:	10 92 94 03 	sts	0x0394, r1	; 0x800394 <Terminal>
+ 386:	a3 c0       	rjmp	.+326    	; 0x4ce <__EEPROM_REGION_LENGTH__+0xce>
 						}
 						} else {
 						enviarString("\r\nNo ingreso ningun valor\r\n");
- 366:	86 eb       	ldi	r24, 0xB6	; 182
- 368:	91 e0       	ldi	r25, 0x01	; 1
- 36a:	0e 94 83 00 	call	0x106	; 0x106 <enviarString>
-						enviarString("Presione Enter para continuar...\r\n");
- 36e:	83 e9       	ldi	r24, 0x93	; 147
- 370:	91 e0       	ldi	r25, 0x01	; 1
- 372:	0e 94 83 00 	call	0x106	; 0x106 <enviarString>
+ 388:	8d eb       	ldi	r24, 0xBD	; 189
+ 38a:	91 e0       	ldi	r25, 0x01	; 1
+ 38c:	0e 94 83 00 	call	0x106	; 0x106 <enviarString>
+						enviarString("Presione cualquier tecla para continuar...\r\n");
+ 390:	80 e9       	ldi	r24, 0x90	; 144
+ 392:	91 e0       	ldi	r25, 0x01	; 1
+ 394:	0e 94 83 00 	call	0x106	; 0x106 <enviarString>
 						editando = 0;
- 376:	10 92 77 03 	sts	0x0377, r1	; 0x800377 <editando>
+ 398:	10 92 93 03 	sts	0x0393, r1	; 0x800393 <editando>
 						pasoEdicion = 0;
- 37a:	10 92 75 03 	sts	0x0375, r1	; 0x800375 <pasoEdicion>
+ 39c:	10 92 91 03 	sts	0x0391, r1	; 0x800391 <pasoEdicion>
 						Terminal = 0;
- 37e:	10 92 79 03 	sts	0x0379, r1	; 0x800379 <Terminal+0x1>
- 382:	10 92 78 03 	sts	0x0378, r1	; 0x800378 <Terminal>
- 386:	81 c0       	rjmp	.+258    	; 0x48a <__EEPROM_REGION_LENGTH__+0x8a>
+ 3a0:	10 92 95 03 	sts	0x0395, r1	; 0x800395 <Terminal+0x1>
+ 3a4:	10 92 94 03 	sts	0x0394, r1	; 0x800394 <Terminal>
+ 3a8:	92 c0       	rjmp	.+292    	; 0x4ce <__EEPROM_REGION_LENGTH__+0xce>
+					}
+				}
+				// Si se presiona cualquier otra tecla (no número, no Enter) salir
+				else {
+					enviarString("\r\nComando cancelado\r\n");
+ 3aa:	89 ed       	ldi	r24, 0xD9	; 217
+ 3ac:	91 e0       	ldi	r25, 0x01	; 1
+ 3ae:	0e 94 83 00 	call	0x106	; 0x106 <enviarString>
+					enviarString("Presione cualquier tecla para continuar...\r\n");
+ 3b2:	80 e9       	ldi	r24, 0x90	; 144
+ 3b4:	91 e0       	ldi	r25, 0x01	; 1
+ 3b6:	0e 94 83 00 	call	0x106	; 0x106 <enviarString>
+					editando = 0;
+ 3ba:	10 92 93 03 	sts	0x0393, r1	; 0x800393 <editando>
+					pasoEdicion = 0;
+ 3be:	10 92 91 03 	sts	0x0391, r1	; 0x800391 <pasoEdicion>
+					Terminal = 0;
+ 3c2:	10 92 95 03 	sts	0x0395, r1	; 0x800395 <Terminal+0x1>
+ 3c6:	10 92 94 03 	sts	0x0394, r1	; 0x800394 <Terminal>
+ 3ca:	81 c0       	rjmp	.+258    	; 0x4ce <__EEPROM_REGION_LENGTH__+0xce>
 			}
 			return;
 		}
 		
 		// Comandos normales (no en edición)
 		if (comando == '1') {
- 388:	81 33       	cpi	r24, 0x31	; 49
- 38a:	59 f4       	brne	.+22     	; 0x3a2 <manejarComandosSerial+0x262>
+ 3cc:	81 33       	cpi	r24, 0x31	; 49
+ 3ce:	59 f4       	brne	.+22     	; 0x3e6 <manejarComandosSerial+0x2a6>
 			Manual = 0;
- 38c:	10 92 7a 03 	sts	0x037A, r1	; 0x80037a <Manual>
+ 3d0:	10 92 96 03 	sts	0x0396, r1	; 0x800396 <Manual>
 			enviarString("\r\nCambiando a MODO MANUAL\r\n");
- 390:	82 ed       	ldi	r24, 0xD2	; 210
- 392:	91 e0       	ldi	r25, 0x01	; 1
- 394:	0e 94 83 00 	call	0x106	; 0x106 <enviarString>
+ 3d4:	8f ee       	ldi	r24, 0xEF	; 239
+ 3d6:	91 e0       	ldi	r25, 0x01	; 1
+ 3d8:	0e 94 83 00 	call	0x106	; 0x106 <enviarString>
 			Terminal = 0;
- 398:	10 92 79 03 	sts	0x0379, r1	; 0x800379 <Terminal+0x1>
- 39c:	10 92 78 03 	sts	0x0378, r1	; 0x800378 <Terminal>
- 3a0:	74 c0       	rjmp	.+232    	; 0x48a <__EEPROM_REGION_LENGTH__+0x8a>
+ 3dc:	10 92 95 03 	sts	0x0395, r1	; 0x800395 <Terminal+0x1>
+ 3e0:	10 92 94 03 	sts	0x0394, r1	; 0x800394 <Terminal>
+ 3e4:	74 c0       	rjmp	.+232    	; 0x4ce <__EEPROM_REGION_LENGTH__+0xce>
 		}
 		else if (comando == '2') {
- 3a2:	82 33       	cpi	r24, 0x32	; 50
- 3a4:	61 f4       	brne	.+24     	; 0x3be <manejarComandosSerial+0x27e>
+ 3e6:	82 33       	cpi	r24, 0x32	; 50
+ 3e8:	61 f4       	brne	.+24     	; 0x402 <__EEPROM_REGION_LENGTH__+0x2>
 			Manual = 1;
- 3a6:	81 e0       	ldi	r24, 0x01	; 1
- 3a8:	80 93 7a 03 	sts	0x037A, r24	; 0x80037a <Manual>
+ 3ea:	81 e0       	ldi	r24, 0x01	; 1
+ 3ec:	80 93 96 03 	sts	0x0396, r24	; 0x800396 <Manual>
 			enviarString("\r\nCambiando a MODO AUTOMATICO\r\n");
- 3ac:	8e ee       	ldi	r24, 0xEE	; 238
- 3ae:	91 e0       	ldi	r25, 0x01	; 1
- 3b0:	0e 94 83 00 	call	0x106	; 0x106 <enviarString>
+ 3f0:	8b e0       	ldi	r24, 0x0B	; 11
+ 3f2:	92 e0       	ldi	r25, 0x02	; 2
+ 3f4:	0e 94 83 00 	call	0x106	; 0x106 <enviarString>
 			Terminal = 0;
- 3b4:	10 92 79 03 	sts	0x0379, r1	; 0x800379 <Terminal+0x1>
- 3b8:	10 92 78 03 	sts	0x0378, r1	; 0x800378 <Terminal>
- 3bc:	66 c0       	rjmp	.+204    	; 0x48a <__EEPROM_REGION_LENGTH__+0x8a>
+ 3f8:	10 92 95 03 	sts	0x0395, r1	; 0x800395 <Terminal+0x1>
+ 3fc:	10 92 94 03 	sts	0x0394, r1	; 0x800394 <Terminal>
+ 400:	66 c0       	rjmp	.+204    	; 0x4ce <__EEPROM_REGION_LENGTH__+0xce>
 		}
 		else if (comando == '3' && Manual == 1) {
- 3be:	83 33       	cpi	r24, 0x33	; 51
- 3c0:	09 f0       	breq	.+2      	; 0x3c4 <manejarComandosSerial+0x284>
- 3c2:	63 c0       	rjmp	.+198    	; 0x48a <__EEPROM_REGION_LENGTH__+0x8a>
- 3c4:	80 91 7a 03 	lds	r24, 0x037A	; 0x80037a <Manual>
- 3c8:	81 30       	cpi	r24, 0x01	; 1
- 3ca:	09 f0       	breq	.+2      	; 0x3ce <manejarComandosSerial+0x28e>
- 3cc:	5e c0       	rjmp	.+188    	; 0x48a <__EEPROM_REGION_LENGTH__+0x8a>
+ 402:	83 33       	cpi	r24, 0x33	; 51
+ 404:	09 f0       	breq	.+2      	; 0x408 <__EEPROM_REGION_LENGTH__+0x8>
+ 406:	63 c0       	rjmp	.+198    	; 0x4ce <__EEPROM_REGION_LENGTH__+0xce>
+ 408:	80 91 96 03 	lds	r24, 0x0396	; 0x800396 <Manual>
+ 40c:	81 30       	cpi	r24, 0x01	; 1
+ 40e:	09 f0       	breq	.+2      	; 0x412 <__EEPROM_REGION_LENGTH__+0x12>
+ 410:	5e c0       	rjmp	.+188    	; 0x4ce <__EEPROM_REGION_LENGTH__+0xce>
 			editando = 1;
- 3ce:	80 93 77 03 	sts	0x0377, r24	; 0x800377 <editando>
+ 412:	80 93 93 03 	sts	0x0393, r24	; 0x800393 <editando>
 			pasoEdicion = 0;
- 3d2:	10 92 75 03 	sts	0x0375, r1	; 0x800375 <pasoEdicion>
+ 416:	10 92 91 03 	sts	0x0391, r1	; 0x800391 <pasoEdicion>
 			limpiarTerminal();
- 3d6:	0e 94 90 00 	call	0x120	; 0x120 <limpiarTerminal>
+ 41a:	0e 94 90 00 	call	0x120	; 0x120 <limpiarTerminal>
 			enviarString("\r\n===== EDITAR VALORES =====\r\n");
- 3da:	8e e0       	ldi	r24, 0x0E	; 14
- 3dc:	92 e0       	ldi	r25, 0x02	; 2
- 3de:	0e 94 83 00 	call	0x106	; 0x106 <enviarString>
+ 41e:	8b e2       	ldi	r24, 0x2B	; 43
+ 420:	92 e0       	ldi	r25, 0x02	; 2
+ 422:	0e 94 83 00 	call	0x106	; 0x106 <enviarString>
 			enviarString("Seleccione el pot a editar:\r\n");
- 3e2:	8d e2       	ldi	r24, 0x2D	; 45
- 3e4:	92 e0       	ldi	r25, 0x02	; 2
- 3e6:	0e 94 83 00 	call	0x106	; 0x106 <enviarString>
-			enviarString("1 - Pot 1 (actual: ");
- 3ea:	8b e4       	ldi	r24, 0x4B	; 75
- 3ec:	92 e0       	ldi	r25, 0x02	; 2
- 3ee:	0e 94 83 00 	call	0x106	; 0x106 <enviarString>
- 3f2:	4a e0       	ldi	r20, 0x0A	; 10
- 3f4:	63 e8       	ldi	r22, 0x83	; 131
- 3f6:	73 e0       	ldi	r23, 0x03	; 3
- 3f8:	80 91 81 03 	lds	r24, 0x0381	; 0x800381 <pot1>
- 3fc:	90 91 82 03 	lds	r25, 0x0382	; 0x800382 <pot1+0x1>
- 400:	0e 94 97 03 	call	0x72e	; 0x72e <__itoa_ncheck>
-			enviarString(itoa(pot1, buffer, 10));
- 404:	0e 94 83 00 	call	0x106	; 0x106 <enviarString>
-			enviarString(")\r\n");
- 408:	8f e5       	ldi	r24, 0x5F	; 95
- 40a:	92 e0       	ldi	r25, 0x02	; 2
- 40c:	0e 94 83 00 	call	0x106	; 0x106 <enviarString>
-			enviarString("2 - Pot 2 (actual: ");
- 410:	83 e6       	ldi	r24, 0x63	; 99
- 412:	92 e0       	ldi	r25, 0x02	; 2
- 414:	0e 94 83 00 	call	0x106	; 0x106 <enviarString>
- 418:	4a e0       	ldi	r20, 0x0A	; 10
- 41a:	63 e8       	ldi	r22, 0x83	; 131
- 41c:	73 e0       	ldi	r23, 0x03	; 3
- 41e:	80 91 7f 03 	lds	r24, 0x037F	; 0x80037f <pot2>
- 422:	90 91 80 03 	lds	r25, 0x0380	; 0x800380 <pot2+0x1>
- 426:	0e 94 97 03 	call	0x72e	; 0x72e <__itoa_ncheck>
-			enviarString(itoa(pot2, buffer, 10));
+ 426:	8a e4       	ldi	r24, 0x4A	; 74
+ 428:	92 e0       	ldi	r25, 0x02	; 2
  42a:	0e 94 83 00 	call	0x106	; 0x106 <enviarString>
-			enviarString(")\r\n");
- 42e:	8f e5       	ldi	r24, 0x5F	; 95
+			enviarString("1 - Pot 1 (actual: ");
+ 42e:	88 e6       	ldi	r24, 0x68	; 104
  430:	92 e0       	ldi	r25, 0x02	; 2
  432:	0e 94 83 00 	call	0x106	; 0x106 <enviarString>
-			enviarString("3 - Pot 3 (actual: ");
- 436:	87 e7       	ldi	r24, 0x77	; 119
- 438:	92 e0       	ldi	r25, 0x02	; 2
- 43a:	0e 94 83 00 	call	0x106	; 0x106 <enviarString>
- 43e:	4a e0       	ldi	r20, 0x0A	; 10
- 440:	63 e8       	ldi	r22, 0x83	; 131
- 442:	73 e0       	ldi	r23, 0x03	; 3
- 444:	80 91 7d 03 	lds	r24, 0x037D	; 0x80037d <pot3>
- 448:	90 91 7e 03 	lds	r25, 0x037E	; 0x80037e <pot3+0x1>
- 44c:	0e 94 97 03 	call	0x72e	; 0x72e <__itoa_ncheck>
-			enviarString(itoa(pot3, buffer, 10));
- 450:	0e 94 83 00 	call	0x106	; 0x106 <enviarString>
+ 436:	4a e0       	ldi	r20, 0x0A	; 10
+ 438:	6f e9       	ldi	r22, 0x9F	; 159
+ 43a:	73 e0       	ldi	r23, 0x03	; 3
+ 43c:	80 91 9d 03 	lds	r24, 0x039D	; 0x80039d <pot1>
+ 440:	90 91 9e 03 	lds	r25, 0x039E	; 0x80039e <pot1+0x1>
+ 444:	0e 94 d1 03 	call	0x7a2	; 0x7a2 <__itoa_ncheck>
+			enviarString(itoa(pot1, buffer, 10));
+ 448:	0e 94 83 00 	call	0x106	; 0x106 <enviarString>
 			enviarString(")\r\n");
- 454:	8f e5       	ldi	r24, 0x5F	; 95
+ 44c:	8c e7       	ldi	r24, 0x7C	; 124
+ 44e:	92 e0       	ldi	r25, 0x02	; 2
+ 450:	0e 94 83 00 	call	0x106	; 0x106 <enviarString>
+			enviarString("2 - Pot 2 (actual: ");
+ 454:	80 e8       	ldi	r24, 0x80	; 128
  456:	92 e0       	ldi	r25, 0x02	; 2
  458:	0e 94 83 00 	call	0x106	; 0x106 <enviarString>
-			enviarString("4 - Pot 4 (actual: ");
- 45c:	8b e8       	ldi	r24, 0x8B	; 139
- 45e:	92 e0       	ldi	r25, 0x02	; 2
- 460:	0e 94 83 00 	call	0x106	; 0x106 <enviarString>
- 464:	4a e0       	ldi	r20, 0x0A	; 10
- 466:	63 e8       	ldi	r22, 0x83	; 131
- 468:	73 e0       	ldi	r23, 0x03	; 3
- 46a:	80 91 7b 03 	lds	r24, 0x037B	; 0x80037b <pot4>
- 46e:	90 91 7c 03 	lds	r25, 0x037C	; 0x80037c <pot4+0x1>
- 472:	0e 94 97 03 	call	0x72e	; 0x72e <__itoa_ncheck>
-			enviarString(itoa(pot4, buffer, 10));
- 476:	0e 94 83 00 	call	0x106	; 0x106 <enviarString>
+ 45c:	4a e0       	ldi	r20, 0x0A	; 10
+ 45e:	6f e9       	ldi	r22, 0x9F	; 159
+ 460:	73 e0       	ldi	r23, 0x03	; 3
+ 462:	80 91 9b 03 	lds	r24, 0x039B	; 0x80039b <pot2>
+ 466:	90 91 9c 03 	lds	r25, 0x039C	; 0x80039c <pot2+0x1>
+ 46a:	0e 94 d1 03 	call	0x7a2	; 0x7a2 <__itoa_ncheck>
+			enviarString(itoa(pot2, buffer, 10));
+ 46e:	0e 94 83 00 	call	0x106	; 0x106 <enviarString>
 			enviarString(")\r\n");
- 47a:	8f e5       	ldi	r24, 0x5F	; 95
+ 472:	8c e7       	ldi	r24, 0x7C	; 124
+ 474:	92 e0       	ldi	r25, 0x02	; 2
+ 476:	0e 94 83 00 	call	0x106	; 0x106 <enviarString>
+			enviarString("3 - Pot 3 (actual: ");
+ 47a:	84 e9       	ldi	r24, 0x94	; 148
  47c:	92 e0       	ldi	r25, 0x02	; 2
  47e:	0e 94 83 00 	call	0x106	; 0x106 <enviarString>
+ 482:	4a e0       	ldi	r20, 0x0A	; 10
+ 484:	6f e9       	ldi	r22, 0x9F	; 159
+ 486:	73 e0       	ldi	r23, 0x03	; 3
+ 488:	80 91 99 03 	lds	r24, 0x0399	; 0x800399 <pot3>
+ 48c:	90 91 9a 03 	lds	r25, 0x039A	; 0x80039a <pot3+0x1>
+ 490:	0e 94 d1 03 	call	0x7a2	; 0x7a2 <__itoa_ncheck>
+			enviarString(itoa(pot3, buffer, 10));
+ 494:	0e 94 83 00 	call	0x106	; 0x106 <enviarString>
+			enviarString(")\r\n");
+ 498:	8c e7       	ldi	r24, 0x7C	; 124
+ 49a:	92 e0       	ldi	r25, 0x02	; 2
+ 49c:	0e 94 83 00 	call	0x106	; 0x106 <enviarString>
+			enviarString("4 - Pot 4 (actual: ");
+ 4a0:	88 ea       	ldi	r24, 0xA8	; 168
+ 4a2:	92 e0       	ldi	r25, 0x02	; 2
+ 4a4:	0e 94 83 00 	call	0x106	; 0x106 <enviarString>
+ 4a8:	4a e0       	ldi	r20, 0x0A	; 10
+ 4aa:	6f e9       	ldi	r22, 0x9F	; 159
+ 4ac:	73 e0       	ldi	r23, 0x03	; 3
+ 4ae:	80 91 97 03 	lds	r24, 0x0397	; 0x800397 <pot4>
+ 4b2:	90 91 98 03 	lds	r25, 0x0398	; 0x800398 <pot4+0x1>
+ 4b6:	0e 94 d1 03 	call	0x7a2	; 0x7a2 <__itoa_ncheck>
+			enviarString(itoa(pot4, buffer, 10));
+ 4ba:	0e 94 83 00 	call	0x106	; 0x106 <enviarString>
+			enviarString(")\r\n");
+ 4be:	8c e7       	ldi	r24, 0x7C	; 124
+ 4c0:	92 e0       	ldi	r25, 0x02	; 2
+ 4c2:	0e 94 83 00 	call	0x106	; 0x106 <enviarString>
 			enviarString("\r\nOpcion: ");
- 482:	8f e9       	ldi	r24, 0x9F	; 159
- 484:	92 e0       	ldi	r25, 0x02	; 2
- 486:	0e 94 83 00 	call	0x106	; 0x106 <enviarString>
+ 4c6:	8c eb       	ldi	r24, 0xBC	; 188
+ 4c8:	92 e0       	ldi	r25, 0x02	; 2
+ 4ca:	0e 94 83 00 	call	0x106	; 0x106 <enviarString>
 		}
 	}
 }
- 48a:	df 91       	pop	r29
- 48c:	cf 91       	pop	r28
- 48e:	08 95       	ret
+ 4ce:	df 91       	pop	r29
+ 4d0:	cf 91       	pop	r28
+ 4d2:	08 95       	ret
 
-00000490 <mostrarMenuAuto>:
+000004d4 <mostrarMenuAuto>:
 
 void mostrarMenuAuto(void) {
 	enviarString("\r\n======================\r\n");
- 490:	8a ea       	ldi	r24, 0xAA	; 170
- 492:	92 e0       	ldi	r25, 0x02	; 2
- 494:	0e 94 83 00 	call	0x106	; 0x106 <enviarString>
+ 4d4:	87 ec       	ldi	r24, 0xC7	; 199
+ 4d6:	92 e0       	ldi	r25, 0x02	; 2
+ 4d8:	0e 94 83 00 	call	0x106	; 0x106 <enviarString>
 	enviarString("\r\nMODO AUTOMATICO\r\n");
- 498:	85 ec       	ldi	r24, 0xC5	; 197
- 49a:	92 e0       	ldi	r25, 0x02	; 2
- 49c:	0e 94 83 00 	call	0x106	; 0x106 <enviarString>
-	enviarString("\r\n======================\r\n");
- 4a0:	8a ea       	ldi	r24, 0xAA	; 170
- 4a2:	92 e0       	ldi	r25, 0x02	; 2
- 4a4:	0e 94 83 00 	call	0x106	; 0x106 <enviarString>
-	enviarString("Pot 1: ");
- 4a8:	89 ed       	ldi	r24, 0xD9	; 217
- 4aa:	92 e0       	ldi	r25, 0x02	; 2
- 4ac:	0e 94 83 00 	call	0x106	; 0x106 <enviarString>
- 4b0:	4a e0       	ldi	r20, 0x0A	; 10
- 4b2:	63 e8       	ldi	r22, 0x83	; 131
- 4b4:	73 e0       	ldi	r23, 0x03	; 3
- 4b6:	80 91 81 03 	lds	r24, 0x0381	; 0x800381 <pot1>
- 4ba:	90 91 82 03 	lds	r25, 0x0382	; 0x800382 <pot1+0x1>
- 4be:	0e 94 97 03 	call	0x72e	; 0x72e <__itoa_ncheck>
-	enviarString(itoa(pot1, buffer, 10));
- 4c2:	0e 94 83 00 	call	0x106	; 0x106 <enviarString>
-	enviarString("\r\nPot 2: ");
- 4c6:	81 ee       	ldi	r24, 0xE1	; 225
- 4c8:	92 e0       	ldi	r25, 0x02	; 2
- 4ca:	0e 94 83 00 	call	0x106	; 0x106 <enviarString>
- 4ce:	4a e0       	ldi	r20, 0x0A	; 10
- 4d0:	63 e8       	ldi	r22, 0x83	; 131
- 4d2:	73 e0       	ldi	r23, 0x03	; 3
- 4d4:	80 91 7f 03 	lds	r24, 0x037F	; 0x80037f <pot2>
- 4d8:	90 91 80 03 	lds	r25, 0x0380	; 0x800380 <pot2+0x1>
- 4dc:	0e 94 97 03 	call	0x72e	; 0x72e <__itoa_ncheck>
-	enviarString(itoa(pot2, buffer, 10));
+ 4dc:	82 ee       	ldi	r24, 0xE2	; 226
+ 4de:	92 e0       	ldi	r25, 0x02	; 2
  4e0:	0e 94 83 00 	call	0x106	; 0x106 <enviarString>
-	enviarString("\r\nPot 3: ");
- 4e4:	8b ee       	ldi	r24, 0xEB	; 235
+	enviarString("\r\n======================\r\n");
+ 4e4:	87 ec       	ldi	r24, 0xC7	; 199
  4e6:	92 e0       	ldi	r25, 0x02	; 2
  4e8:	0e 94 83 00 	call	0x106	; 0x106 <enviarString>
- 4ec:	4a e0       	ldi	r20, 0x0A	; 10
- 4ee:	63 e8       	ldi	r22, 0x83	; 131
- 4f0:	73 e0       	ldi	r23, 0x03	; 3
- 4f2:	80 91 7d 03 	lds	r24, 0x037D	; 0x80037d <pot3>
- 4f6:	90 91 7e 03 	lds	r25, 0x037E	; 0x80037e <pot3+0x1>
- 4fa:	0e 94 97 03 	call	0x72e	; 0x72e <__itoa_ncheck>
-	enviarString(itoa(pot3, buffer, 10));
- 4fe:	0e 94 83 00 	call	0x106	; 0x106 <enviarString>
-	enviarString("\r\nPot 4: ");
- 502:	85 ef       	ldi	r24, 0xF5	; 245
- 504:	92 e0       	ldi	r25, 0x02	; 2
+	enviarString("Pot 1: ");
+ 4ec:	86 ef       	ldi	r24, 0xF6	; 246
+ 4ee:	92 e0       	ldi	r25, 0x02	; 2
+ 4f0:	0e 94 83 00 	call	0x106	; 0x106 <enviarString>
+ 4f4:	4a e0       	ldi	r20, 0x0A	; 10
+ 4f6:	6f e9       	ldi	r22, 0x9F	; 159
+ 4f8:	73 e0       	ldi	r23, 0x03	; 3
+ 4fa:	80 91 9d 03 	lds	r24, 0x039D	; 0x80039d <pot1>
+ 4fe:	90 91 9e 03 	lds	r25, 0x039E	; 0x80039e <pot1+0x1>
+ 502:	0e 94 d1 03 	call	0x7a2	; 0x7a2 <__itoa_ncheck>
+	enviarString(itoa(pot1, buffer, 10));
  506:	0e 94 83 00 	call	0x106	; 0x106 <enviarString>
- 50a:	4a e0       	ldi	r20, 0x0A	; 10
- 50c:	63 e8       	ldi	r22, 0x83	; 131
- 50e:	73 e0       	ldi	r23, 0x03	; 3
- 510:	80 91 7b 03 	lds	r24, 0x037B	; 0x80037b <pot4>
- 514:	90 91 7c 03 	lds	r25, 0x037C	; 0x80037c <pot4+0x1>
- 518:	0e 94 97 03 	call	0x72e	; 0x72e <__itoa_ncheck>
-	enviarString(itoa(pot4, buffer, 10));
- 51c:	0e 94 83 00 	call	0x106	; 0x106 <enviarString>
-	enviarString("\r\n======================\r\n");
- 520:	8a ea       	ldi	r24, 0xAA	; 170
- 522:	92 e0       	ldi	r25, 0x02	; 2
+	enviarString("\r\nPot 2: ");
+ 50a:	8e ef       	ldi	r24, 0xFE	; 254
+ 50c:	92 e0       	ldi	r25, 0x02	; 2
+ 50e:	0e 94 83 00 	call	0x106	; 0x106 <enviarString>
+ 512:	4a e0       	ldi	r20, 0x0A	; 10
+ 514:	6f e9       	ldi	r22, 0x9F	; 159
+ 516:	73 e0       	ldi	r23, 0x03	; 3
+ 518:	80 91 9b 03 	lds	r24, 0x039B	; 0x80039b <pot2>
+ 51c:	90 91 9c 03 	lds	r25, 0x039C	; 0x80039c <pot2+0x1>
+ 520:	0e 94 d1 03 	call	0x7a2	; 0x7a2 <__itoa_ncheck>
+	enviarString(itoa(pot2, buffer, 10));
  524:	0e 94 83 00 	call	0x106	; 0x106 <enviarString>
-	enviarString("\r\nComandos:\r\n");
- 528:	8f ef       	ldi	r24, 0xFF	; 255
- 52a:	92 e0       	ldi	r25, 0x02	; 2
+	enviarString("\r\nPot 3: ");
+ 528:	88 e0       	ldi	r24, 0x08	; 8
+ 52a:	93 e0       	ldi	r25, 0x03	; 3
  52c:	0e 94 83 00 	call	0x106	; 0x106 <enviarString>
+ 530:	4a e0       	ldi	r20, 0x0A	; 10
+ 532:	6f e9       	ldi	r22, 0x9F	; 159
+ 534:	73 e0       	ldi	r23, 0x03	; 3
+ 536:	80 91 99 03 	lds	r24, 0x0399	; 0x800399 <pot3>
+ 53a:	90 91 9a 03 	lds	r25, 0x039A	; 0x80039a <pot3+0x1>
+ 53e:	0e 94 d1 03 	call	0x7a2	; 0x7a2 <__itoa_ncheck>
+	enviarString(itoa(pot3, buffer, 10));
+ 542:	0e 94 83 00 	call	0x106	; 0x106 <enviarString>
+	enviarString("\r\nPot 4: ");
+ 546:	82 e1       	ldi	r24, 0x12	; 18
+ 548:	93 e0       	ldi	r25, 0x03	; 3
+ 54a:	0e 94 83 00 	call	0x106	; 0x106 <enviarString>
+ 54e:	4a e0       	ldi	r20, 0x0A	; 10
+ 550:	6f e9       	ldi	r22, 0x9F	; 159
+ 552:	73 e0       	ldi	r23, 0x03	; 3
+ 554:	80 91 97 03 	lds	r24, 0x0397	; 0x800397 <pot4>
+ 558:	90 91 98 03 	lds	r25, 0x0398	; 0x800398 <pot4+0x1>
+ 55c:	0e 94 d1 03 	call	0x7a2	; 0x7a2 <__itoa_ncheck>
+	enviarString(itoa(pot4, buffer, 10));
+ 560:	0e 94 83 00 	call	0x106	; 0x106 <enviarString>
+	enviarString("\r\n======================\r\n");
+ 564:	87 ec       	ldi	r24, 0xC7	; 199
+ 566:	92 e0       	ldi	r25, 0x02	; 2
+ 568:	0e 94 83 00 	call	0x106	; 0x106 <enviarString>
+	enviarString("\r\nComandos:\r\n");
+ 56c:	8c e1       	ldi	r24, 0x1C	; 28
+ 56e:	93 e0       	ldi	r25, 0x03	; 3
+ 570:	0e 94 83 00 	call	0x106	; 0x106 <enviarString>
 	enviarString("1 - Volver a Modo Manual\r\n");
- 530:	8d e0       	ldi	r24, 0x0D	; 13
- 532:	93 e0       	ldi	r25, 0x03	; 3
- 534:	0e 94 83 00 	call	0x106	; 0x106 <enviarString>
+ 574:	8a e2       	ldi	r24, 0x2A	; 42
+ 576:	93 e0       	ldi	r25, 0x03	; 3
+ 578:	0e 94 83 00 	call	0x106	; 0x106 <enviarString>
 	enviarString("3 - Editar valor de Pot\r\n");
- 538:	88 e2       	ldi	r24, 0x28	; 40
- 53a:	93 e0       	ldi	r25, 0x03	; 3
- 53c:	0e 94 83 00 	call	0x106	; 0x106 <enviarString>
+ 57c:	85 e4       	ldi	r24, 0x45	; 69
+ 57e:	93 e0       	ldi	r25, 0x03	; 3
+ 580:	0e 94 83 00 	call	0x106	; 0x106 <enviarString>
 	enviarString("\r\n");
- 540:	80 e6       	ldi	r24, 0x60	; 96
- 542:	92 e0       	ldi	r25, 0x02	; 2
- 544:	0e 94 83 00 	call	0x106	; 0x106 <enviarString>
- 548:	08 95       	ret
+ 584:	8d e7       	ldi	r24, 0x7D	; 125
+ 586:	92 e0       	ldi	r25, 0x02	; 2
+ 588:	0e 94 83 00 	call	0x106	; 0x106 <enviarString>
+ 58c:	08 95       	ret
 
-0000054a <main>:
+0000058e <main>:
 void manejarComandosSerial(void);
 void mostrarMenuAuto(void);
 // ====================================================================
 // Main Function
 int main(void) {
 	setup();
- 54a:	0e 94 53 00 	call	0xa6	; 0xa6 <setup>
+ 58e:	0e 94 53 00 	call	0xa6	; 0xa6 <setup>
 	while(1) {
 		// Verificar comandos por serial
 		manejarComandosSerial();
- 54e:	0e 94 a0 00 	call	0x140	; 0x140 <manejarComandosSerial>
+ 592:	0e 94 a0 00 	call	0x140	; 0x140 <manejarComandosSerial>
 				if (Manual == 0) {
- 552:	80 91 7a 03 	lds	r24, 0x037A	; 0x80037a <Manual>
- 556:	81 11       	cpse	r24, r1
- 558:	a5 c0       	rjmp	.+330    	; 0x6a4 <main+0x15a>
+ 596:	80 91 96 03 	lds	r24, 0x0396	; 0x800396 <Manual>
+ 59a:	81 11       	cpse	r24, r1
+ 59c:	bd c0       	rjmp	.+378    	; 0x718 <main+0x18a>
 					// Loop para modo Manual (Manual = 0)
 					//led que indica modo manual
 					PORTD |= (1 << PD6);
- 55a:	8b b1       	in	r24, 0x0b	; 11
- 55c:	80 64       	ori	r24, 0x40	; 64
- 55e:	8b b9       	out	0x0b, r24	; 11
+ 59e:	8b b1       	in	r24, 0x0b	; 11
+ 5a0:	80 64       	ori	r24, 0x40	; 64
+ 5a2:	8b b9       	out	0x0b, r24	; 11
 					PORTD &= ~(1 << PD7); 
- 560:	8b b1       	in	r24, 0x0b	; 11
- 562:	8f 77       	andi	r24, 0x7F	; 127
- 564:	8b b9       	out	0x0b, r24	; 11
+ 5a4:	8b b1       	in	r24, 0x0b	; 11
+ 5a6:	8f 77       	andi	r24, 0x7F	; 127
+ 5a8:	8b b9       	out	0x0b, r24	; 11
 					//para leer los pots
 					PORTD |= (1 << PD2) | (1 << PD3) | (1 << PD4) | (1 << PD5);
- 566:	8b b1       	in	r24, 0x0b	; 11
- 568:	8c 63       	ori	r24, 0x3C	; 60
- 56a:	8b b9       	out	0x0b, r24	; 11
-					uint16_t pot1 = (leerADC(4)/10);  
- 56c:	84 e0       	ldi	r24, 0x04	; 4
- 56e:	0e 94 67 00 	call	0xce	; 0xce <leerADC>
- 572:	9c 01       	movw	r18, r24
- 574:	ad ec       	ldi	r26, 0xCD	; 205
- 576:	bc ec       	ldi	r27, 0xCC	; 204
- 578:	0e 94 6a 03 	call	0x6d4	; 0x6d4 <__umulhisi3>
- 57c:	8c 01       	movw	r16, r24
- 57e:	16 95       	lsr	r17
- 580:	07 95       	ror	r16
- 582:	16 95       	lsr	r17
- 584:	07 95       	ror	r16
- 586:	16 95       	lsr	r17
- 588:	07 95       	ror	r16
+ 5aa:	8b b1       	in	r24, 0x0b	; 11
+ 5ac:	8c 63       	ori	r24, 0x3C	; 60
+ 5ae:	8b b9       	out	0x0b, r24	; 11
+					pot1 = (leerADC(4)/10);  
+ 5b0:	84 e0       	ldi	r24, 0x04	; 4
+ 5b2:	0e 94 67 00 	call	0xce	; 0xce <leerADC>
+ 5b6:	9c 01       	movw	r18, r24
+ 5b8:	ad ec       	ldi	r26, 0xCD	; 205
+ 5ba:	bc ec       	ldi	r27, 0xCC	; 204
+ 5bc:	0e 94 a4 03 	call	0x748	; 0x748 <__umulhisi3>
+ 5c0:	96 95       	lsr	r25
+ 5c2:	87 95       	ror	r24
+ 5c4:	96 95       	lsr	r25
+ 5c6:	87 95       	ror	r24
+ 5c8:	96 95       	lsr	r25
+ 5ca:	87 95       	ror	r24
+ 5cc:	90 93 9e 03 	sts	0x039E, r25	; 0x80039e <pot1+0x1>
+ 5d0:	80 93 9d 03 	sts	0x039D, r24	; 0x80039d <pot1>
 					// Leer pot 2
-					uint16_t pot2 = (leerADC(5)/10);  
- 58a:	85 e0       	ldi	r24, 0x05	; 5
- 58c:	0e 94 67 00 	call	0xce	; 0xce <leerADC>
- 590:	9c 01       	movw	r18, r24
- 592:	ad ec       	ldi	r26, 0xCD	; 205
- 594:	bc ec       	ldi	r27, 0xCC	; 204
- 596:	0e 94 6a 03 	call	0x6d4	; 0x6d4 <__umulhisi3>
- 59a:	7c 01       	movw	r14, r24
- 59c:	f6 94       	lsr	r15
- 59e:	e7 94       	ror	r14
- 5a0:	f6 94       	lsr	r15
- 5a2:	e7 94       	ror	r14
- 5a4:	f6 94       	lsr	r15
- 5a6:	e7 94       	ror	r14
+					pot2 = (leerADC(5)/10);  
+ 5d4:	85 e0       	ldi	r24, 0x05	; 5
+ 5d6:	0e 94 67 00 	call	0xce	; 0xce <leerADC>
+ 5da:	9c 01       	movw	r18, r24
+ 5dc:	ad ec       	ldi	r26, 0xCD	; 205
+ 5de:	bc ec       	ldi	r27, 0xCC	; 204
+ 5e0:	0e 94 a4 03 	call	0x748	; 0x748 <__umulhisi3>
+ 5e4:	96 95       	lsr	r25
+ 5e6:	87 95       	ror	r24
+ 5e8:	96 95       	lsr	r25
+ 5ea:	87 95       	ror	r24
+ 5ec:	96 95       	lsr	r25
+ 5ee:	87 95       	ror	r24
+ 5f0:	90 93 9c 03 	sts	0x039C, r25	; 0x80039c <pot2+0x1>
+ 5f4:	80 93 9b 03 	sts	0x039B, r24	; 0x80039b <pot2>
 					// Leer pot 3
-					uint16_t pot3 = (leerADC(6)/10); 
- 5a8:	86 e0       	ldi	r24, 0x06	; 6
- 5aa:	0e 94 67 00 	call	0xce	; 0xce <leerADC>
- 5ae:	9c 01       	movw	r18, r24
- 5b0:	ad ec       	ldi	r26, 0xCD	; 205
- 5b2:	bc ec       	ldi	r27, 0xCC	; 204
- 5b4:	0e 94 6a 03 	call	0x6d4	; 0x6d4 <__umulhisi3>
- 5b8:	6c 01       	movw	r12, r24
- 5ba:	d6 94       	lsr	r13
- 5bc:	c7 94       	ror	r12
- 5be:	d6 94       	lsr	r13
- 5c0:	c7 94       	ror	r12
- 5c2:	d6 94       	lsr	r13
- 5c4:	c7 94       	ror	r12
+					pot3 = (leerADC(6)/10); 
+ 5f8:	86 e0       	ldi	r24, 0x06	; 6
+ 5fa:	0e 94 67 00 	call	0xce	; 0xce <leerADC>
+ 5fe:	9c 01       	movw	r18, r24
+ 600:	ad ec       	ldi	r26, 0xCD	; 205
+ 602:	bc ec       	ldi	r27, 0xCC	; 204
+ 604:	0e 94 a4 03 	call	0x748	; 0x748 <__umulhisi3>
+ 608:	96 95       	lsr	r25
+ 60a:	87 95       	ror	r24
+ 60c:	96 95       	lsr	r25
+ 60e:	87 95       	ror	r24
+ 610:	96 95       	lsr	r25
+ 612:	87 95       	ror	r24
+ 614:	90 93 9a 03 	sts	0x039A, r25	; 0x80039a <pot3+0x1>
+ 618:	80 93 99 03 	sts	0x0399, r24	; 0x800399 <pot3>
 					// Leer pot 4
-					uint16_t pot4 = (leerADC(7)/10);  
- 5c6:	87 e0       	ldi	r24, 0x07	; 7
- 5c8:	0e 94 67 00 	call	0xce	; 0xce <leerADC>
- 5cc:	9c 01       	movw	r18, r24
- 5ce:	ad ec       	ldi	r26, 0xCD	; 205
- 5d0:	bc ec       	ldi	r27, 0xCC	; 204
- 5d2:	0e 94 6a 03 	call	0x6d4	; 0x6d4 <__umulhisi3>
- 5d6:	ec 01       	movw	r28, r24
- 5d8:	d6 95       	lsr	r29
- 5da:	c7 95       	ror	r28
- 5dc:	d6 95       	lsr	r29
- 5de:	c7 95       	ror	r28
- 5e0:	d6 95       	lsr	r29
- 5e2:	c7 95       	ror	r28
+					pot4 = (leerADC(7)/10);  
+ 61c:	87 e0       	ldi	r24, 0x07	; 7
+ 61e:	0e 94 67 00 	call	0xce	; 0xce <leerADC>
+ 622:	9c 01       	movw	r18, r24
+ 624:	ad ec       	ldi	r26, 0xCD	; 205
+ 626:	bc ec       	ldi	r27, 0xCC	; 204
+ 628:	0e 94 a4 03 	call	0x748	; 0x748 <__umulhisi3>
+ 62c:	96 95       	lsr	r25
+ 62e:	87 95       	ror	r24
+ 630:	96 95       	lsr	r25
+ 632:	87 95       	ror	r24
+ 634:	96 95       	lsr	r25
+ 636:	87 95       	ror	r24
+ 638:	90 93 98 03 	sts	0x0398, r25	; 0x800398 <pot4+0x1>
+ 63c:	80 93 97 03 	sts	0x0397, r24	; 0x800397 <pot4>
 	#else
 		//round up by default
 		__ticks_dc = (uint32_t)(ceil(fabs(__tmp)));
 	#endif
 
 	__builtin_avr_delay_cycles(__ticks_dc);
- 5e4:	8f e3       	ldi	r24, 0x3F	; 63
- 5e6:	9c e9       	ldi	r25, 0x9C	; 156
- 5e8:	01 97       	sbiw	r24, 0x01	; 1
- 5ea:	f1 f7       	brne	.-4      	; 0x5e8 <main+0x9e>
- 5ec:	00 c0       	rjmp	.+0      	; 0x5ee <main+0xa4>
- 5ee:	00 00       	nop
+ 640:	8f e3       	ldi	r24, 0x3F	; 63
+ 642:	9c e9       	ldi	r25, 0x9C	; 156
+ 644:	01 97       	sbiw	r24, 0x01	; 1
+ 646:	f1 f7       	brne	.-4      	; 0x644 <main+0xb6>
+ 648:	00 c0       	rjmp	.+0      	; 0x64a <main+0xbc>
+ 64a:	00 00       	nop
 					
 					_delay_ms(10);
 					
 					if (Terminal == 0) {
- 5f0:	80 91 78 03 	lds	r24, 0x0378	; 0x800378 <Terminal>
- 5f4:	90 91 79 03 	lds	r25, 0x0379	; 0x800379 <Terminal+0x1>
- 5f8:	00 97       	sbiw	r24, 0x00	; 0
- 5fa:	09 f0       	breq	.+2      	; 0x5fe <main+0xb4>
- 5fc:	4d c0       	rjmp	.+154    	; 0x698 <main+0x14e>
+ 64c:	80 91 94 03 	lds	r24, 0x0394	; 0x800394 <Terminal>
+ 650:	90 91 95 03 	lds	r25, 0x0395	; 0x800395 <Terminal+0x1>
+ 654:	00 97       	sbiw	r24, 0x00	; 0
+ 656:	09 f0       	breq	.+2      	; 0x65a <main+0xcc>
+ 658:	59 c0       	rjmp	.+178    	; 0x70c <main+0x17e>
 						limpiarTerminal();
- 5fe:	0e 94 90 00 	call	0x120	; 0x120 <limpiarTerminal>
+ 65a:	0e 94 90 00 	call	0x120	; 0x120 <limpiarTerminal>
 						enviarString("\r\n======================\r\n");
- 602:	8a ea       	ldi	r24, 0xAA	; 170
- 604:	92 e0       	ldi	r25, 0x02	; 2
- 606:	0e 94 83 00 	call	0x106	; 0x106 <enviarString>
+ 65e:	87 ec       	ldi	r24, 0xC7	; 199
+ 660:	92 e0       	ldi	r25, 0x02	; 2
+ 662:	0e 94 83 00 	call	0x106	; 0x106 <enviarString>
 						enviarString("\r\nModo Manual\r\n");
- 60a:	82 e4       	ldi	r24, 0x42	; 66
- 60c:	93 e0       	ldi	r25, 0x03	; 3
- 60e:	0e 94 83 00 	call	0x106	; 0x106 <enviarString>
+ 666:	8f e5       	ldi	r24, 0x5F	; 95
+ 668:	93 e0       	ldi	r25, 0x03	; 3
+ 66a:	0e 94 83 00 	call	0x106	; 0x106 <enviarString>
 						enviarString("\r\n======================\r\n");
- 612:	8a ea       	ldi	r24, 0xAA	; 170
- 614:	92 e0       	ldi	r25, 0x02	; 2
- 616:	0e 94 83 00 	call	0x106	; 0x106 <enviarString>
+ 66e:	87 ec       	ldi	r24, 0xC7	; 199
+ 670:	92 e0       	ldi	r25, 0x02	; 2
+ 672:	0e 94 83 00 	call	0x106	; 0x106 <enviarString>
 						enviarString("Pot 1: ");
- 61a:	89 ed       	ldi	r24, 0xD9	; 217
- 61c:	92 e0       	ldi	r25, 0x02	; 2
- 61e:	0e 94 83 00 	call	0x106	; 0x106 <enviarString>
- 622:	4a e0       	ldi	r20, 0x0A	; 10
- 624:	63 e8       	ldi	r22, 0x83	; 131
- 626:	73 e0       	ldi	r23, 0x03	; 3
- 628:	c8 01       	movw	r24, r16
- 62a:	0e 94 97 03 	call	0x72e	; 0x72e <__itoa_ncheck>
+ 676:	86 ef       	ldi	r24, 0xF6	; 246
+ 678:	92 e0       	ldi	r25, 0x02	; 2
+ 67a:	0e 94 83 00 	call	0x106	; 0x106 <enviarString>
+ 67e:	4a e0       	ldi	r20, 0x0A	; 10
+ 680:	6f e9       	ldi	r22, 0x9F	; 159
+ 682:	73 e0       	ldi	r23, 0x03	; 3
+ 684:	80 91 9d 03 	lds	r24, 0x039D	; 0x80039d <pot1>
+ 688:	90 91 9e 03 	lds	r25, 0x039E	; 0x80039e <pot1+0x1>
+ 68c:	0e 94 d1 03 	call	0x7a2	; 0x7a2 <__itoa_ncheck>
 						enviarString(itoa(pot1, buffer, 10));
- 62e:	0e 94 83 00 	call	0x106	; 0x106 <enviarString>
+ 690:	0e 94 83 00 	call	0x106	; 0x106 <enviarString>
 						enviarString("\r\nPot 2: ");
- 632:	81 ee       	ldi	r24, 0xE1	; 225
- 634:	92 e0       	ldi	r25, 0x02	; 2
- 636:	0e 94 83 00 	call	0x106	; 0x106 <enviarString>
- 63a:	4a e0       	ldi	r20, 0x0A	; 10
- 63c:	63 e8       	ldi	r22, 0x83	; 131
- 63e:	73 e0       	ldi	r23, 0x03	; 3
- 640:	c7 01       	movw	r24, r14
- 642:	0e 94 97 03 	call	0x72e	; 0x72e <__itoa_ncheck>
+ 694:	8e ef       	ldi	r24, 0xFE	; 254
+ 696:	92 e0       	ldi	r25, 0x02	; 2
+ 698:	0e 94 83 00 	call	0x106	; 0x106 <enviarString>
+ 69c:	4a e0       	ldi	r20, 0x0A	; 10
+ 69e:	6f e9       	ldi	r22, 0x9F	; 159
+ 6a0:	73 e0       	ldi	r23, 0x03	; 3
+ 6a2:	80 91 9b 03 	lds	r24, 0x039B	; 0x80039b <pot2>
+ 6a6:	90 91 9c 03 	lds	r25, 0x039C	; 0x80039c <pot2+0x1>
+ 6aa:	0e 94 d1 03 	call	0x7a2	; 0x7a2 <__itoa_ncheck>
 						enviarString(itoa(pot2, buffer, 10));
- 646:	0e 94 83 00 	call	0x106	; 0x106 <enviarString>
+ 6ae:	0e 94 83 00 	call	0x106	; 0x106 <enviarString>
 						enviarString("\r\nPot 3: ");
- 64a:	8b ee       	ldi	r24, 0xEB	; 235
- 64c:	92 e0       	ldi	r25, 0x02	; 2
- 64e:	0e 94 83 00 	call	0x106	; 0x106 <enviarString>
- 652:	4a e0       	ldi	r20, 0x0A	; 10
- 654:	63 e8       	ldi	r22, 0x83	; 131
- 656:	73 e0       	ldi	r23, 0x03	; 3
- 658:	c6 01       	movw	r24, r12
- 65a:	0e 94 97 03 	call	0x72e	; 0x72e <__itoa_ncheck>
+ 6b2:	88 e0       	ldi	r24, 0x08	; 8
+ 6b4:	93 e0       	ldi	r25, 0x03	; 3
+ 6b6:	0e 94 83 00 	call	0x106	; 0x106 <enviarString>
+ 6ba:	4a e0       	ldi	r20, 0x0A	; 10
+ 6bc:	6f e9       	ldi	r22, 0x9F	; 159
+ 6be:	73 e0       	ldi	r23, 0x03	; 3
+ 6c0:	80 91 99 03 	lds	r24, 0x0399	; 0x800399 <pot3>
+ 6c4:	90 91 9a 03 	lds	r25, 0x039A	; 0x80039a <pot3+0x1>
+ 6c8:	0e 94 d1 03 	call	0x7a2	; 0x7a2 <__itoa_ncheck>
 						enviarString(itoa(pot3, buffer, 10));
- 65e:	0e 94 83 00 	call	0x106	; 0x106 <enviarString>
+ 6cc:	0e 94 83 00 	call	0x106	; 0x106 <enviarString>
 						enviarString("\r\nPot 4: ");
- 662:	85 ef       	ldi	r24, 0xF5	; 245
- 664:	92 e0       	ldi	r25, 0x02	; 2
- 666:	0e 94 83 00 	call	0x106	; 0x106 <enviarString>
- 66a:	4a e0       	ldi	r20, 0x0A	; 10
- 66c:	63 e8       	ldi	r22, 0x83	; 131
- 66e:	73 e0       	ldi	r23, 0x03	; 3
- 670:	ce 01       	movw	r24, r28
- 672:	0e 94 97 03 	call	0x72e	; 0x72e <__itoa_ncheck>
+ 6d0:	82 e1       	ldi	r24, 0x12	; 18
+ 6d2:	93 e0       	ldi	r25, 0x03	; 3
+ 6d4:	0e 94 83 00 	call	0x106	; 0x106 <enviarString>
+ 6d8:	4a e0       	ldi	r20, 0x0A	; 10
+ 6da:	6f e9       	ldi	r22, 0x9F	; 159
+ 6dc:	73 e0       	ldi	r23, 0x03	; 3
+ 6de:	80 91 97 03 	lds	r24, 0x0397	; 0x800397 <pot4>
+ 6e2:	90 91 98 03 	lds	r25, 0x0398	; 0x800398 <pot4+0x1>
+ 6e6:	0e 94 d1 03 	call	0x7a2	; 0x7a2 <__itoa_ncheck>
 						enviarString(itoa(pot4, buffer, 10));
- 676:	0e 94 83 00 	call	0x106	; 0x106 <enviarString>
+ 6ea:	0e 94 83 00 	call	0x106	; 0x106 <enviarString>
 						enviarString("\r\n======================\r\n");
- 67a:	8a ea       	ldi	r24, 0xAA	; 170
- 67c:	92 e0       	ldi	r25, 0x02	; 2
- 67e:	0e 94 83 00 	call	0x106	; 0x106 <enviarString>
+ 6ee:	87 ec       	ldi	r24, 0xC7	; 199
+ 6f0:	92 e0       	ldi	r25, 0x02	; 2
+ 6f2:	0e 94 83 00 	call	0x106	; 0x106 <enviarString>
 						enviarString("\r\nPress 2 para cambiar de modo\r\n");
- 682:	82 e5       	ldi	r24, 0x52	; 82
- 684:	93 e0       	ldi	r25, 0x03	; 3
- 686:	0e 94 83 00 	call	0x106	; 0x106 <enviarString>
+ 6f6:	8f e6       	ldi	r24, 0x6F	; 111
+ 6f8:	93 e0       	ldi	r25, 0x03	; 3
+ 6fa:	0e 94 83 00 	call	0x106	; 0x106 <enviarString>
 						Terminal = 100;
- 68a:	84 e6       	ldi	r24, 0x64	; 100
- 68c:	90 e0       	ldi	r25, 0x00	; 0
- 68e:	90 93 79 03 	sts	0x0379, r25	; 0x800379 <Terminal+0x1>
- 692:	80 93 78 03 	sts	0x0378, r24	; 0x800378 <Terminal>
- 696:	5b cf       	rjmp	.-330    	; 0x54e <main+0x4>
+ 6fe:	84 e6       	ldi	r24, 0x64	; 100
+ 700:	90 e0       	ldi	r25, 0x00	; 0
+ 702:	90 93 95 03 	sts	0x0395, r25	; 0x800395 <Terminal+0x1>
+ 706:	80 93 94 03 	sts	0x0394, r24	; 0x800394 <Terminal>
+ 70a:	43 cf       	rjmp	.-378    	; 0x592 <main+0x4>
 					}
 					else { Terminal--;}
- 698:	01 97       	sbiw	r24, 0x01	; 1
- 69a:	90 93 79 03 	sts	0x0379, r25	; 0x800379 <Terminal+0x1>
- 69e:	80 93 78 03 	sts	0x0378, r24	; 0x800378 <Terminal>
- 6a2:	55 cf       	rjmp	.-342    	; 0x54e <main+0x4>
+ 70c:	01 97       	sbiw	r24, 0x01	; 1
+ 70e:	90 93 95 03 	sts	0x0395, r25	; 0x800395 <Terminal+0x1>
+ 712:	80 93 94 03 	sts	0x0394, r24	; 0x800394 <Terminal>
+ 716:	3d cf       	rjmp	.-390    	; 0x592 <main+0x4>
 				}
 				else {
 					// Loop para modo Automatico (Manual = 1)
 					//indicar el modo automatico
 					PORTD &= ~(1 << PD6);
- 6a4:	8b b1       	in	r24, 0x0b	; 11
- 6a6:	8f 7b       	andi	r24, 0xBF	; 191
- 6a8:	8b b9       	out	0x0b, r24	; 11
+ 718:	8b b1       	in	r24, 0x0b	; 11
+ 71a:	8f 7b       	andi	r24, 0xBF	; 191
+ 71c:	8b b9       	out	0x0b, r24	; 11
 					PORTD |= (1 << PD7);
- 6aa:	8b b1       	in	r24, 0x0b	; 11
- 6ac:	80 68       	ori	r24, 0x80	; 128
- 6ae:	8b b9       	out	0x0b, r24	; 11
+ 71e:	8b b1       	in	r24, 0x0b	; 11
+ 720:	80 68       	ori	r24, 0x80	; 128
+ 722:	8b b9       	out	0x0b, r24	; 11
 					if (Terminal == 0) {
- 6b0:	80 91 78 03 	lds	r24, 0x0378	; 0x800378 <Terminal>
- 6b4:	90 91 79 03 	lds	r25, 0x0379	; 0x800379 <Terminal+0x1>
- 6b8:	89 2b       	or	r24, r25
- 6ba:	09 f0       	breq	.+2      	; 0x6be <main+0x174>
- 6bc:	48 cf       	rjmp	.-368    	; 0x54e <main+0x4>
+ 724:	80 91 94 03 	lds	r24, 0x0394	; 0x800394 <Terminal>
+ 728:	90 91 95 03 	lds	r25, 0x0395	; 0x800395 <Terminal+0x1>
+ 72c:	89 2b       	or	r24, r25
+ 72e:	09 f0       	breq	.+2      	; 0x732 <main+0x1a4>
+ 730:	30 cf       	rjmp	.-416    	; 0x592 <main+0x4>
 						limpiarTerminal();
- 6be:	0e 94 90 00 	call	0x120	; 0x120 <limpiarTerminal>
+ 732:	0e 94 90 00 	call	0x120	; 0x120 <limpiarTerminal>
 						 mostrarMenuAuto(); 
- 6c2:	0e 94 48 02 	call	0x490	; 0x490 <mostrarMenuAuto>
+ 736:	0e 94 6a 02 	call	0x4d4	; 0x4d4 <mostrarMenuAuto>
 						Terminal = 1;
- 6c6:	81 e0       	ldi	r24, 0x01	; 1
- 6c8:	90 e0       	ldi	r25, 0x00	; 0
- 6ca:	90 93 79 03 	sts	0x0379, r25	; 0x800379 <Terminal+0x1>
- 6ce:	80 93 78 03 	sts	0x0378, r24	; 0x800378 <Terminal>
- 6d2:	3d cf       	rjmp	.-390    	; 0x54e <main+0x4>
+ 73a:	81 e0       	ldi	r24, 0x01	; 1
+ 73c:	90 e0       	ldi	r25, 0x00	; 0
+ 73e:	90 93 95 03 	sts	0x0395, r25	; 0x800395 <Terminal+0x1>
+ 742:	80 93 94 03 	sts	0x0394, r24	; 0x800394 <Terminal>
+ 746:	25 cf       	rjmp	.-438    	; 0x592 <main+0x4>
 
-000006d4 <__umulhisi3>:
- 6d4:	a2 9f       	mul	r26, r18
- 6d6:	b0 01       	movw	r22, r0
- 6d8:	b3 9f       	mul	r27, r19
- 6da:	c0 01       	movw	r24, r0
- 6dc:	a3 9f       	mul	r26, r19
- 6de:	70 0d       	add	r23, r0
- 6e0:	81 1d       	adc	r24, r1
- 6e2:	11 24       	eor	r1, r1
- 6e4:	91 1d       	adc	r25, r1
- 6e6:	b2 9f       	mul	r27, r18
- 6e8:	70 0d       	add	r23, r0
- 6ea:	81 1d       	adc	r24, r1
- 6ec:	11 24       	eor	r1, r1
- 6ee:	91 1d       	adc	r25, r1
- 6f0:	08 95       	ret
+00000748 <__umulhisi3>:
+ 748:	a2 9f       	mul	r26, r18
+ 74a:	b0 01       	movw	r22, r0
+ 74c:	b3 9f       	mul	r27, r19
+ 74e:	c0 01       	movw	r24, r0
+ 750:	a3 9f       	mul	r26, r19
+ 752:	70 0d       	add	r23, r0
+ 754:	81 1d       	adc	r24, r1
+ 756:	11 24       	eor	r1, r1
+ 758:	91 1d       	adc	r25, r1
+ 75a:	b2 9f       	mul	r27, r18
+ 75c:	70 0d       	add	r23, r0
+ 75e:	81 1d       	adc	r24, r1
+ 760:	11 24       	eor	r1, r1
+ 762:	91 1d       	adc	r25, r1
+ 764:	08 95       	ret
 
-000006f2 <atoi>:
- 6f2:	fc 01       	movw	r30, r24
- 6f4:	88 27       	eor	r24, r24
- 6f6:	99 27       	eor	r25, r25
- 6f8:	e8 94       	clt
- 6fa:	21 91       	ld	r18, Z+
- 6fc:	20 32       	cpi	r18, 0x20	; 32
- 6fe:	e9 f3       	breq	.-6      	; 0x6fa <atoi+0x8>
- 700:	29 30       	cpi	r18, 0x09	; 9
- 702:	10 f0       	brcs	.+4      	; 0x708 <atoi+0x16>
- 704:	2e 30       	cpi	r18, 0x0E	; 14
- 706:	c8 f3       	brcs	.-14     	; 0x6fa <atoi+0x8>
- 708:	2b 32       	cpi	r18, 0x2B	; 43
- 70a:	41 f0       	breq	.+16     	; 0x71c <atoi+0x2a>
- 70c:	2d 32       	cpi	r18, 0x2D	; 45
- 70e:	39 f4       	brne	.+14     	; 0x71e <atoi+0x2c>
- 710:	68 94       	set
- 712:	04 c0       	rjmp	.+8      	; 0x71c <atoi+0x2a>
- 714:	0e 94 a2 03 	call	0x744	; 0x744 <__mulhi_const_10>
- 718:	82 0f       	add	r24, r18
- 71a:	91 1d       	adc	r25, r1
- 71c:	21 91       	ld	r18, Z+
- 71e:	20 53       	subi	r18, 0x30	; 48
- 720:	2a 30       	cpi	r18, 0x0A	; 10
- 722:	c0 f3       	brcs	.-16     	; 0x714 <atoi+0x22>
- 724:	1e f4       	brtc	.+6      	; 0x72c <atoi+0x3a>
- 726:	90 95       	com	r25
- 728:	81 95       	neg	r24
- 72a:	9f 4f       	sbci	r25, 0xFF	; 255
- 72c:	08 95       	ret
+00000766 <atoi>:
+ 766:	fc 01       	movw	r30, r24
+ 768:	88 27       	eor	r24, r24
+ 76a:	99 27       	eor	r25, r25
+ 76c:	e8 94       	clt
+ 76e:	21 91       	ld	r18, Z+
+ 770:	20 32       	cpi	r18, 0x20	; 32
+ 772:	e9 f3       	breq	.-6      	; 0x76e <atoi+0x8>
+ 774:	29 30       	cpi	r18, 0x09	; 9
+ 776:	10 f0       	brcs	.+4      	; 0x77c <atoi+0x16>
+ 778:	2e 30       	cpi	r18, 0x0E	; 14
+ 77a:	c8 f3       	brcs	.-14     	; 0x76e <atoi+0x8>
+ 77c:	2b 32       	cpi	r18, 0x2B	; 43
+ 77e:	41 f0       	breq	.+16     	; 0x790 <atoi+0x2a>
+ 780:	2d 32       	cpi	r18, 0x2D	; 45
+ 782:	39 f4       	brne	.+14     	; 0x792 <atoi+0x2c>
+ 784:	68 94       	set
+ 786:	04 c0       	rjmp	.+8      	; 0x790 <atoi+0x2a>
+ 788:	0e 94 dc 03 	call	0x7b8	; 0x7b8 <__mulhi_const_10>
+ 78c:	82 0f       	add	r24, r18
+ 78e:	91 1d       	adc	r25, r1
+ 790:	21 91       	ld	r18, Z+
+ 792:	20 53       	subi	r18, 0x30	; 48
+ 794:	2a 30       	cpi	r18, 0x0A	; 10
+ 796:	c0 f3       	brcs	.-16     	; 0x788 <atoi+0x22>
+ 798:	1e f4       	brtc	.+6      	; 0x7a0 <atoi+0x3a>
+ 79a:	90 95       	com	r25
+ 79c:	81 95       	neg	r24
+ 79e:	9f 4f       	sbci	r25, 0xFF	; 255
+ 7a0:	08 95       	ret
 
-0000072e <__itoa_ncheck>:
- 72e:	bb 27       	eor	r27, r27
- 730:	4a 30       	cpi	r20, 0x0A	; 10
- 732:	31 f4       	brne	.+12     	; 0x740 <__itoa_ncheck+0x12>
- 734:	99 23       	and	r25, r25
- 736:	22 f4       	brpl	.+8      	; 0x740 <__itoa_ncheck+0x12>
- 738:	bd e2       	ldi	r27, 0x2D	; 45
- 73a:	90 95       	com	r25
- 73c:	81 95       	neg	r24
- 73e:	9f 4f       	sbci	r25, 0xFF	; 255
- 740:	0c 94 ab 03 	jmp	0x756	; 0x756 <__utoa_common>
+000007a2 <__itoa_ncheck>:
+ 7a2:	bb 27       	eor	r27, r27
+ 7a4:	4a 30       	cpi	r20, 0x0A	; 10
+ 7a6:	31 f4       	brne	.+12     	; 0x7b4 <__itoa_ncheck+0x12>
+ 7a8:	99 23       	and	r25, r25
+ 7aa:	22 f4       	brpl	.+8      	; 0x7b4 <__itoa_ncheck+0x12>
+ 7ac:	bd e2       	ldi	r27, 0x2D	; 45
+ 7ae:	90 95       	com	r25
+ 7b0:	81 95       	neg	r24
+ 7b2:	9f 4f       	sbci	r25, 0xFF	; 255
+ 7b4:	0c 94 e5 03 	jmp	0x7ca	; 0x7ca <__utoa_common>
 
-00000744 <__mulhi_const_10>:
- 744:	7a e0       	ldi	r23, 0x0A	; 10
- 746:	97 9f       	mul	r25, r23
- 748:	90 2d       	mov	r25, r0
- 74a:	87 9f       	mul	r24, r23
- 74c:	80 2d       	mov	r24, r0
- 74e:	91 0d       	add	r25, r1
- 750:	11 24       	eor	r1, r1
- 752:	08 95       	ret
+000007b8 <__mulhi_const_10>:
+ 7b8:	7a e0       	ldi	r23, 0x0A	; 10
+ 7ba:	97 9f       	mul	r25, r23
+ 7bc:	90 2d       	mov	r25, r0
+ 7be:	87 9f       	mul	r24, r23
+ 7c0:	80 2d       	mov	r24, r0
+ 7c2:	91 0d       	add	r25, r1
+ 7c4:	11 24       	eor	r1, r1
+ 7c6:	08 95       	ret
 
-00000754 <__utoa_ncheck>:
- 754:	bb 27       	eor	r27, r27
+000007c8 <__utoa_ncheck>:
+ 7c8:	bb 27       	eor	r27, r27
 
-00000756 <__utoa_common>:
- 756:	fb 01       	movw	r30, r22
- 758:	55 27       	eor	r21, r21
- 75a:	aa 27       	eor	r26, r26
- 75c:	88 0f       	add	r24, r24
- 75e:	99 1f       	adc	r25, r25
- 760:	aa 1f       	adc	r26, r26
- 762:	a4 17       	cp	r26, r20
- 764:	10 f0       	brcs	.+4      	; 0x76a <__utoa_common+0x14>
- 766:	a4 1b       	sub	r26, r20
- 768:	83 95       	inc	r24
- 76a:	50 51       	subi	r21, 0x10	; 16
- 76c:	b9 f7       	brne	.-18     	; 0x75c <__utoa_common+0x6>
- 76e:	a0 5d       	subi	r26, 0xD0	; 208
- 770:	aa 33       	cpi	r26, 0x3A	; 58
- 772:	08 f0       	brcs	.+2      	; 0x776 <__utoa_common+0x20>
- 774:	a9 5d       	subi	r26, 0xD9	; 217
- 776:	a1 93       	st	Z+, r26
- 778:	00 97       	sbiw	r24, 0x00	; 0
- 77a:	79 f7       	brne	.-34     	; 0x75a <__utoa_common+0x4>
- 77c:	b1 11       	cpse	r27, r1
- 77e:	b1 93       	st	Z+, r27
- 780:	11 92       	st	Z+, r1
- 782:	cb 01       	movw	r24, r22
- 784:	0c 94 c4 03 	jmp	0x788	; 0x788 <strrev>
+000007ca <__utoa_common>:
+ 7ca:	fb 01       	movw	r30, r22
+ 7cc:	55 27       	eor	r21, r21
+ 7ce:	aa 27       	eor	r26, r26
+ 7d0:	88 0f       	add	r24, r24
+ 7d2:	99 1f       	adc	r25, r25
+ 7d4:	aa 1f       	adc	r26, r26
+ 7d6:	a4 17       	cp	r26, r20
+ 7d8:	10 f0       	brcs	.+4      	; 0x7de <__utoa_common+0x14>
+ 7da:	a4 1b       	sub	r26, r20
+ 7dc:	83 95       	inc	r24
+ 7de:	50 51       	subi	r21, 0x10	; 16
+ 7e0:	b9 f7       	brne	.-18     	; 0x7d0 <__utoa_common+0x6>
+ 7e2:	a0 5d       	subi	r26, 0xD0	; 208
+ 7e4:	aa 33       	cpi	r26, 0x3A	; 58
+ 7e6:	08 f0       	brcs	.+2      	; 0x7ea <__utoa_common+0x20>
+ 7e8:	a9 5d       	subi	r26, 0xD9	; 217
+ 7ea:	a1 93       	st	Z+, r26
+ 7ec:	00 97       	sbiw	r24, 0x00	; 0
+ 7ee:	79 f7       	brne	.-34     	; 0x7ce <__utoa_common+0x4>
+ 7f0:	b1 11       	cpse	r27, r1
+ 7f2:	b1 93       	st	Z+, r27
+ 7f4:	11 92       	st	Z+, r1
+ 7f6:	cb 01       	movw	r24, r22
+ 7f8:	0c 94 fe 03 	jmp	0x7fc	; 0x7fc <strrev>
 
-00000788 <strrev>:
- 788:	dc 01       	movw	r26, r24
- 78a:	fc 01       	movw	r30, r24
- 78c:	67 2f       	mov	r22, r23
- 78e:	71 91       	ld	r23, Z+
- 790:	77 23       	and	r23, r23
- 792:	e1 f7       	brne	.-8      	; 0x78c <strrev+0x4>
- 794:	32 97       	sbiw	r30, 0x02	; 2
- 796:	04 c0       	rjmp	.+8      	; 0x7a0 <strrev+0x18>
- 798:	7c 91       	ld	r23, X
- 79a:	6d 93       	st	X+, r22
- 79c:	70 83       	st	Z, r23
- 79e:	62 91       	ld	r22, -Z
- 7a0:	ae 17       	cp	r26, r30
- 7a2:	bf 07       	cpc	r27, r31
- 7a4:	c8 f3       	brcs	.-14     	; 0x798 <strrev+0x10>
- 7a6:	08 95       	ret
+000007fc <strrev>:
+ 7fc:	dc 01       	movw	r26, r24
+ 7fe:	fc 01       	movw	r30, r24
+ 800:	67 2f       	mov	r22, r23
+ 802:	71 91       	ld	r23, Z+
+ 804:	77 23       	and	r23, r23
+ 806:	e1 f7       	brne	.-8      	; 0x800 <__DATA_REGION_LENGTH__>
+ 808:	32 97       	sbiw	r30, 0x02	; 2
+ 80a:	04 c0       	rjmp	.+8      	; 0x814 <__DATA_REGION_LENGTH__+0x14>
+ 80c:	7c 91       	ld	r23, X
+ 80e:	6d 93       	st	X+, r22
+ 810:	70 83       	st	Z, r23
+ 812:	62 91       	ld	r22, -Z
+ 814:	ae 17       	cp	r26, r30
+ 816:	bf 07       	cpc	r27, r31
+ 818:	c8 f3       	brcs	.-14     	; 0x80c <__DATA_REGION_LENGTH__+0xc>
+ 81a:	08 95       	ret
 
-000007a8 <_exit>:
- 7a8:	f8 94       	cli
+0000081c <_exit>:
+ 81c:	f8 94       	cli
 
-000007aa <__stop_program>:
- 7aa:	ff cf       	rjmp	.-2      	; 0x7aa <__stop_program>
+0000081e <__stop_program>:
+ 81e:	ff cf       	rjmp	.-2      	; 0x81e <__stop_program>
