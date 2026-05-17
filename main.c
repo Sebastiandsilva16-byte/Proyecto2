@@ -38,7 +38,6 @@ void enviar_pots(uint16_t pot1, uint16_t pot2, uint16_t pot3, uint16_t pot4);
 // MAIN
 int main(void)
 {
-	pot4 = 0;
 	setup();
     while (1) 
     {
@@ -158,7 +157,7 @@ void enviar_por_usart(char dato) {
 	UDR0 = dato;
 }
 
-void enviar_string(const char* str) {
+void enviar_string(const char* str) {q
 	while (*str) {
 		enviar_por_usart(*str++);
 	}
